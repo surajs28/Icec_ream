@@ -1,19 +1,16 @@
-# React coverflow integration
+# React islands integration
 
-The site now supports React, TypeScript, Tailwind CSS v4 and a shadcn-compatible source layout. The React carousel mounts only on the menu page, keeping the remaining static pages lightweight. No context provider or extra state-management library is required.
+The static site uses React, TypeScript, Motion and Tailwind CSS v4 with a shadcn-compatible source layout. `src/menu.tsx` mounts the hero image into `#berry-hero-image` when present, and mounts coverflow into homepage `#flavours` only when `body[data-page="index.html"]` matches. The menu page keeps its static 24-flavour filters/search and pint controls. No context provider or additional state-management library is needed.
 
-- Reusable UI: `components/ui/3-d-coverflow-carousel.tsx`
-- Demo: `components/demo.tsx`
-- Page entry and pint handoff: `src/menu.tsx`
-- Shared Tailwind entry: `src/gelato.css`
-- Scoped carousel styles: `src/coverflow.css`
-- Utility: `lib/utils.ts`
-- Aliases and strict checking: `tsconfig.json`; `@/components/ui` resolves to `components/ui`.
-- shadcn CLI configuration: `components.json`.
-
-The `components/ui` folder keeps registry components in a predictable reusable location and makes the supplied import path work. The shadcn CLI uses `aliases.ui` to place new components there.
+- Hero: `components/ui/berry-hero-image.tsx`; asset `public/assets/hero-berry.png`.
+- Carousel: `components/ui/3-d-coverflow-carousel.tsx`; demo `components/demo.tsx`.
+- React entry and homepage pint handoff: `src/menu.tsx`.
+- Shared Tailwind entry: `src/gelato.css`; scoped styles: `src/coverflow.css` and `src/berry-redesign.css`.
+- Utility: `lib/utils.ts`; strict checking and `@/*` root aliases: `tsconfig.json`.
+- shadcn configuration: `components.json`, with `@/components/ui` resolving to `components/ui`.
 
 ## Run and rebuild
+
 ```powershell
 npm.cmd ci
 npm.cmd run typecheck
@@ -21,15 +18,16 @@ npm.cmd run build
 npm.cmd run preview
 ```
 
-For a new project, the official shadcn setup starts with `npx.cmd shadcn@latest init`. For this existing manually configured project, do not reinitialize it and overwrite the theme. To add a future registry component, use `npx.cmd shadcn@latest add button` after reviewing its generated changes. Tailwind and TypeScript are already installed here; no additional setup is needed to run this integration.
-
-Official configuration reference: https://ui.shadcn.com/docs/components-json
+Preview is http://localhost:4188 and serves `public/`. Build runs typecheck, bundles islands through esbuild into `public/menu.js`, bundles static scripts, and compiles Tailwind to `public/gelato.css`. Publish `public/` contents for static hosting. This project is already configured; no shadcn initialization is needed to run it.
 
 ## Data and behavior
-The supplied restaurant demo is adapted to five Mr Gelato flavour highlights. Three existing generated gelato photos and illustrative Unsplash stock imagery are used, with origin records in `public/assets`. No stock photograph is represented as actual Mr Gelato product photography. No bestseller claim is invented.
 
-The complete 24-flavour filter/search menu and pint builder remain below the carousel. Its CTA selects the named flavour in the first pint layer, scrolls to the builder and focuses the native selector. Props retain `items`, `sectionLabel`, `autoplay`, `autoplayDelay`, `className`, and `onCtaClick`; `imgAlt` is added for honest alternative text.
+The homepage highlights five flavour/pint stories, using illustrative generated imagery and stock photography. Stock origins are recorded in `public/assets`; stock URLs can require network access and fall back to a local illustrative cone. These are not verified catalogue photographs or bestseller evidence.
 
-Autoplay pauses on pointer hover, keyboard focus, offscreen, hidden tabs, global Pause Motion, or OS reduced-motion preference. Manual navigation pauses it until resumed. Keyboard arrows are scoped to the carousel and do not interfere with the pint form. Non-active cards are excluded from keyboard navigation. Swipe distinguishes horizontal intent from vertical scrolling. Empty, single, two-item and changing item arrays are handled safely.
+Carousel props are `items`, `sectionLabel`, `autoplay`, `autoplayDelay`, `className` and `onCtaClick`. `CarouselItem` includes `imgAlt` for descriptive alternative text. Autoplay defaults to true with a 5000ms delay (minimum 3000ms). The homepage callback matches `titleLine1` against the first native layer selector, dispatches its change event, scrolls to `#builder` and focuses the selector. The custom-pint item guides users to choose layers without inventing a matching flavour.
 
-The supplied transition-all declarations, window-wide arrow listener and fixed phone sizing were replaced with explicit transitions, scoped keyboard handling and measured responsive geometry. Physical-phone gesture validation remains separate from desktop browser viewport checks.
+Autoplay pauses on pointer hover, keyboard focus, offscreen, hidden tabs, global Pause motion or OS reduced motion. Manual navigation pauses until resumed. Arrow keys are scoped to the carousel; inactive cards are excluded from keyboard navigation. Swipe distinguishes horizontal intent from vertical scrolling. Empty, single, two-item and changing item arrays are handled in the component.
+
+The hero has static HTML imagery before JavaScript mounts. Motion applies a gentle fine-pointer spring (stiffness 100, damping 10); touch, reduced motion, hidden tabs and global pause suppress optional pointer response. The hero does not load the retained procedural Three.js implementation.
+
+The sample has no API keys, checkout, newsletter storage or backend. Pint controls and downloads are demonstrations. Physical-phone gesture quality and whole-site visual approval must not be inferred from these integration notes.

@@ -1,7 +1,10 @@
 ---
 name: Mr Gelato
-description: Warm playful gelato with sculptural product stages and crisp modern type.
+description: Berry-red photographic gelato with cream actions and bold modern type.
 colors:
+  berry: "#a50e36"
+  berry-dark: "#7f0d2c"
+  berry-light: "#f7dce2"
   cream: "#fff9ef"
   cocoa: "#38251f"
   pistachio: "#d8e8b5"
@@ -9,7 +12,6 @@ colors:
   midnight: "#182b29"
   muted: "#6c584d"
   line: "#d9cfc0"
-  herb: "#537342"
   focus: "#406548"
   field-line: "#b7aa98"
   filter-surface: "#f0e9dd"
@@ -18,9 +20,9 @@ colors:
 typography:
   display:
     fontFamily: "Jakarta, Arial, sans-serif"
-    fontSize: "clamp(56px,6.6vw,92px)"
+    fontSize: "clamp(52px,6.1vw,96px)"
     fontWeight: 800
-    lineHeight: 1.05
+    lineHeight: 1.01
     letterSpacing: "-.04em"
   headline:
     fontFamily: "Jakarta, Arial, sans-serif"
@@ -49,15 +51,13 @@ rounded:
   feature: "20px"
   pill: "100px"
 spacing:
-  action-gap: "13px"
-  bento-gap: "18px"
+  hero-action-gap: "18px"
   grid-gap: "24px"
   gutter: "48px"
   gutter-tablet: "30px"
   gutter-mobile: "20px"
   gutter-small: "16px"
-  section: "100px"
-  section-mobile: "65px"
+  section: "clamp(64px,6.5vw,100px)"
 components:
   button-primary:
     backgroundColor: "{colors.cocoa}"
@@ -65,18 +65,22 @@ components:
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
     padding: "14px 24px"
-    height: "55px"
-  button-primary-hover:
-    backgroundColor: "{colors.midnight}"
   button-outline:
     backgroundColor: "transparent"
+    textColor: "{colors.cocoa}"
+    rounded: "{rounded.pill}"
+    padding: "14px 24px"
+  hero-primary:
+    backgroundColor: "{colors.cream}"
     textColor: "{colors.cocoa}"
     typography: "{typography.label}"
     rounded: "{rounded.pill}"
     padding: "14px 24px"
-    height: "55px"
-  button-outline-hover:
-    backgroundColor: "{colors.outline-hover}"
+  hero-outline:
+    backgroundColor: "transparent"
+    textColor: "{colors.cream}"
+    rounded: "{rounded.pill}"
+    padding: "14px 24px"
   contact-field:
     backgroundColor: "{colors.cream}"
     textColor: "{colors.cocoa}"
@@ -90,11 +94,6 @@ components:
   filter-chip-selected:
     backgroundColor: "{colors.cocoa}"
     textColor: "{colors.cream}"
-  bento-card:
-    backgroundColor: "{colors.cream}"
-    textColor: "{colors.cocoa}"
-    rounded: "{rounded.surface}"
-    padding: "28px"
   navigation:
     backgroundColor: "{colors.nav-glass}"
     textColor: "{colors.cocoa}"
@@ -106,121 +105,107 @@ components:
 
 **Creative North Star: "The Happy Scoop Stage"**
 
-Warm cream and cocoa make an approachable setting for gelato. Pistachio and strawberry add flavour and playfulness; bold modern headings keep the composition direct. Rounded product stages, photographic panels and quiet frosted overlays give the collection room to lead.
+Berry red sets an appetising photographic stage; cream actions and heavy, close-set headings keep Mr Gelato immediate. Warm cream and cocoa support the reading surfaces, while pistachio and strawberry remain flavour accents. The approved hero direction replaces the earlier floating cone composition.
 
-The system pairs generous section separation with compact navigation and controls. Motion responds to exploration: the realistic gelato hero floats and tilts gently, flavour cards tilt and a custom pint changes as choices are made. The hero uses a transparent product image with no WebGL dependency.
+Generous section separation surrounds compact navigation and controls. Product depth responds gently to a fine pointer; coverflow exploration and the concept pint remain optional enhancements to a frontend-only sample.
 
-**Evidence and status:** Source-extracted from `work/motion-build/gelato.css`, `gelato.js`, `gelato-3d.js` and `outputs/site/index.html`, reconciled with `work/design-direction-v4.md` and PRODUCT.md's latest approved implementation. This approved identity replacement supersedes the teal/serif system archived in `work/design-before-v4/`. No rendered desktop or mobile screenshots were available. WebGL output, animation feel, font rendering and physical-device gestures remain unverified. This document records implementation, not launch approval.
+**Evidence and status:** Reconciled from `src/gelato.css`, `src/berry-redesign.css`, `src/coverflow.css`, `components/ui/berry-hero-image.tsx`, `components/ui/3-d-coverflow-carousel.tsx`, `src/menu.tsx` and `public/index.html`, using PRODUCT.md and `.impeccable/hero-direction.md`. This records source behavior; it does not certify pixel-exact reference matching, whole-site review approval or physical-phone gesture quality.
 
 **Key Characteristics:**
-- Warm cream surfaces with cocoa structure.
-- Heavy Jakarta headings with restrained Inter body text.
-- Rounded product imagery, pill controls and asymmetrical bento highlights.
-- Frosted overlays and limited illuminated borders.
-- Optional motion with a photographic 3D fallback.
+- Berry-red photography with cream foreground actions.
+- Heavy Jakarta headings with restrained Inter reading text.
+- Cream information surfaces, pill controls and rounded product imagery.
+- Midnight coverflow with soft photographic depth.
+- Optional motion with reduced-motion and global pause controls.
 
 ## Colors
 
-The palette follows gelato flavours around a warm neutral base; frontmatter values are normative.
-
-The sidecar's eight-step OKLCH ramps are synthesized panel previews, not implemented colour scales. Its scoped component snippets expand the source CSS for independent static previews; selection and menu interaction remain in the site JavaScript.
+The frontmatter owns the palette; the sidecar's synthesized eight-step ramps are panel previews, not implemented colour scales.
 
 ### Primary
-- **Cocoa:** Default text, thin action outlines and primary buttons.
-- **Pistachio:** Product halos and highlighted story tiles; herb provides the darker companion for text and icons.
+- **Berry:** Homepage photographic ground, menu action and newsletter.
+- **Deep Berry:** Mobile homepage navigation and menu-action hover.
+- **Light Berry:** Newsletter field boundary and placeholder.
 
 ### Secondary
-- **Strawberry:** The playful hero stamp and newsletter surface.
+- **Pistachio / Strawberry:** Product staging, coverflow action and focus accents.
 
 ### Tertiary
-- **Midnight:** Footer ground and primary-button hover.
+- **Midnight:** Coverflow and footer grounds; default primary-button hover.
 
 ### Neutral
-- **Cream:** Body, default sections, cards and field fills.
-- **Muted Cocoa:** Supporting copy.
-- **Warm Line / Field Line:** Separators and field boundaries respectively.
-- **Filter Surface / Outline Hover:** Quiet filled controls and outline-button feedback.
-- **Navigation Glass:** Translucent cream for the sticky header.
-- **Leaf Focus:** Visible keyboard focus.
+- **Cream / Cocoa:** Main surface and structural text; inverted on the hero.
+- **Muted Cocoa:** Supporting reading text.
+- **Warm Line / Field Line:** Dividers and form boundaries.
+- **Filter Surface / Outline Hover:** Quiet controls and hover feedback.
+- **Navigation Glass:** Sticky header on inner pages.
+- **Leaf Focus:** Default visible keyboard focus.
 
-**The Cocoa Structure Rule.** Keep dark cocoa text and outlines as the default structure on pale flavour surfaces.
+**The Cocoa Structure Rule.** Keep cocoa text and outlines as the default structure on pale surfaces; use cream foregrounds on berry and midnight grounds.
 
 ## Typography
 
-**Display Font:** Plus Jakarta Sans, locally registered under the CSS family `Jakarta`, with Arial/sans-serif fallback.
-**Body Font:** Inter, locally hosted, with Arial/sans-serif fallback.
-
-**Character:** Heavy sans-serif headlines provide playful scale. Inter keeps navigation, product descriptions and forms calm and legible. Variable TTF fonts ship locally, without a runtime remote font service.
-
-### Hierarchy
-- **Display:** Base hero uses the frontmatter role. At 1100px it becomes 74px; at 800px it uses `clamp(54px,9vw,74px)`; at 420px it becomes 51px. Inner pages use smaller contextual clamps.
-- **Headline:** Section headings use the headline role; newsletter and occasion headings are contextual variants.
-- **Title:** Flavour titles use the title role, with a final mobile override to 18px. Bento titles use 22px, with a larger wide tile.
-- **Body:** Base text uses the body role. Hero lead is 17px/1.7. Final story copy is 15px desktop and 14px mobile, bounded to 58ch on desktop. Final flavour descriptions are 14px desktop and 13px mobile.
-- **Label:** Actions and contact labels use the label role. Navigation is 13px/550 desktop and 16px mobile. Form controls grow to 16px mobile.
+Plus Jakarta Sans is locally registered as `Jakarta`; Inter is the reading and control face. Both retain Arial/sans-serif fallbacks and ship as local variable TTF files.
 
 **The Two Voices Rule.** Use Jakarta for brand and headings; use Inter for reading, navigation and controls.
 
-Small annotations below the body scale are not a general reading-text prescription; their rendered legibility remains unverified.
+The display role is the berry hero. At 800px it becomes `clamp(44px,9.7vw,72px)` with 1.04 line height; at 400px it is 44px. Section headlines use the headline role. Flavour titles become 18px at 800px. Hero supporting copy uses `clamp(16px,1.55vw,23px)` and 1.4 line height, becoming 17px on mobile. Story text is 16px/1.75, bounded to 60ch; flavour descriptions are 14px/1.55. Coverflow headings and card titles have contextual scales. Small annotations are not a default body-text prescription.
 
 ## Layout
 
-The centered shell stops at 1280px. Side gutters step through the frontmatter desktop, tablet, mobile and small-phone values at 1100px, 800px and 420px. Standard sections use the recorded section rhythm, reduced at 800px.
+The centered shell stops at 1280px. Side gutters step at 1100px, 800px and 420px using the frontmatter values; the mobile berry hero explicitly keeps 20px gutters. Sections use the recorded fluid rhythm.
 
-Desktop flavour collections use three columns with 30px row gaps and the recorded grid-gap between columns; below 800px they use two. Hero, story, builder, visit and contact layouts become single-column at 800px. Story bento moves from `1fr 1fr 2fr` to two columns with the wide tile spanning both; its intermediate tablet ratio is `1fr 1fr 1.5fr`. Contact starts at `1.2fr 1fr`. Footer starts with four unequal columns and becomes two, with its brand spanning both.
+The desktop berry hero is `clamp(440px,32.1vw,620px)` high with 48% copy width over a full-cover photograph. At 800px it stacks copy above a 330px cropped image, with a 650px minimum overall height. At 400px image height is 290px and minimum overall height is 630px. Homepage navigation overlays the hero; inner-page navigation remains sticky. Navigation shell minimum heights are 80px desktop and 72px mobile.
 
-The sticky header is 91px tall desktop and 76px mobile. At 800px its navigation becomes a disclosed vertical panel. Safe-area top padding, `viewport-fit=cover`, touch manipulation and a hero pointer tilt limited to fine pointers exist in source. Actual phone behavior remains a device verification gate.
+Coverflow mounts on the homepage immediately after the hero. The menu retains all 24 flavours, filters/search and its pint builder. Flavour grids use three columns, becoming two at 800px. Story, builder, visit and contact layouts stack at 800px; story fact rows become two columns with a full-width final cell.
 
 ## Elevation & Depth
 
-Depth combines tonal surfaces, diffuse shadows and translucent cream overlays. The header uses 16px backdrop blur; photo and scene overlays use 12px. Bento tiles remain tonal. The builder uses a single-pixel pistachio-to-pink illuminated edge.
+Photographic scale and overlap create hero depth. Coverflow cards use `0 24px 50px #0005`; builder uses `0 20px 70px rgba(64,43,30,.08)`. Inner-page navigation has 16px backdrop blur, and expanded mobile navigation uses `0 12px 18px #38251f12`. The homepage header is transparent without blur. Story fact cells are flat, separated by warm single-pixel rules.
 
-### Shadow Vocabulary
-- **Builder ambient:** `0 20px 70px rgba(64,43,30,.08)` separates preview and controls.
-- **Action hover:** `0 6px 18px #38251f22` appears for fine hover pointers.
-- **Mobile navigation:** `0 12px 18px #38251f12` separates the expanded menu.
-- **Product cutout:** `drop-shadow(12px 23px 18px rgba(45,56,24,.13))` grounds the pint.
-
-**The Soft Stage Rule.** Use diffuse shadows for product depth and frosted cream for overlays; keep information cards primarily tonal.
+**The Soft Stage Rule.** Keep product depth diffuse and information surfaces quiet; use the existing frosted overlays where they support labels.
 
 ## Shapes
 
-Rounded rectangles frame imagery and information with the surface radius; the builder uses the feature radius with inner 19px corners. Fields use the field radius, rectangular choices the choice radius, and actions/filter chips use the pill radius. Circular halos, swatches and organic scoop silhouettes are product-specific forms. Thin warm outlines define controls and dividers.
+Pill actions and filter chips share the pill radius. Fields use the field radius, size choices the choice radius, photographs the surface radius and the pint container the feature radius. Story fact rows have square corners. Circular swatches and organic scoop silhouettes belong to product staging.
 
 ## Components
 
 ### Buttons
-Confident cocoa pills and outlined peers share the frontmatter geometry. The recorded height is a minimum in source. Primary hover becomes midnight with an ambient shadow; outline hover uses its neutral fill. Active state scales to .97. Fine-pointer magnetic tracking is restrained and disabled with reduced motion. All controls inherit a visible 3px leaf focus outline with a 5px offset. Disabled buttons reduce opacity to .5.
+
+Default actions are cocoa pills with a 55px minimum height; hero actions invert to cream/cocoa or cream outlines with a 52px minimum, becoming 48px mobile. Fine-pointer hover is restrained; active state scales to .97. Default focus is a 3px leaf outline at 5px offset, while coverflow uses strawberry at 4px offset.
 
 ### Chips
-Filter chips sit in a filled pill group; cocoa/cream indicates pressed state via `aria-pressed`. Native checked size/topping choices use a pale green fill and visible keyboard focus. Preserve selected-state semantics beyond colour.
+
+Filters use `aria-pressed` and cocoa/cream selection. Pint choices retain native checked semantics, pale green selected fills and visible focus. Selection must remain understandable beyond colour.
 
 ### Cards / Containers
-Flavour cards place copy outside rounded photographic panels. Desktop imagery is 275px high, stepping to 230px at 800px and 175px at 420px. A frosted category pill labels imagery. Bento uses the recorded padding and surface radius; its wide highlight is pistachio. Fine-pointer tilt and modest image scale provide exploration feedback.
+
+Flavour copy sits outside rounded product images. Story facts now form a ruled row without rounded tile fills. Coverflow cards use photographic vignettes, a 20px radius (16px below 600px) and centered cream text; only the active card exposes its actions to keyboard navigation.
 
 ### Inputs / Fields
-Contact fields use cream fill, a warm field stroke, field radius and recorded padding; text is 14px desktop and 16px mobile. Search and newsletter fields have underline boundaries and also grow to 16px mobile. Native validation and inline status text exist; no custom error/disabled-field visual system has been established.
+
+Contact fields retain cream fills, warm borders and the recorded geometry. Search and newsletter inputs use underlines. Newsletter foreground and field borders follow the berry inversion. Native validation and inline statuses remain; no custom error theme is established.
 
 ### Navigation
-Sticky frosted cream, a compact Jakarta wordmark and Inter links. Current page gets a small cocoa line; fine-pointer hover uses green. The mobile menu reveals vertical navigation and communicates expanded state. Keyboard focus stays visible.
 
-### Product stage and pint builder
-A photorealistic AI-generated strawberry, pistachio and chocolate waffle cone sits over a pistachio orbit. The transparent image has a 900ms entrance, a subtle six-second float, and desktop pointer tilt using a spring with stiffness 100 and damping 10. Motion pauses offscreen, in hidden tabs and when reduced motion is enabled. This is an animated image rather than a rotatable mesh. The earlier Three.js source remains available but is not loaded by this hero. The builder combines a shaped scoop preview with native layer, size and topping controls. Neither is a confirmed catalogue photograph or an ordering flow.
+Homepage cream links sit over berry photography, with a cream menu pill. Inner pages retain frosted cream and a berry menu pill. At 800px a disclosed vertical menu communicates expanded state and preserves keyboard focus.
 
-Motion uses `cubic-bezier(.23,1,.32,1)`: control transforms 160ms, image/tilt transitions 250ms, section reveals 550ms and hero entrance 650ms with 65ms stagger. The headline gradient runs once over 3.5s. Reduced-motion CSS removes transitions and smooth scrolling; JavaScript gates tilt, magnetism and reveals. The footer toggle pauses optional motion. These timings describe source intent and have not passed rendered motion review.
+### Photographic hero and coverflow
+
+`public/assets/hero-berry.png` is illustrative strawberry/pistachio gelato with a metal scoop. A static HTML image renders before the React island. Motion uses stiffness 100 and damping 10, driving at most ±4px horizontally and ±3px vertically at scale 1.025 for fine pointers. Touch, reduced motion, hidden tabs and the global pause suppress optional pointer response. There is no WebGL dependency for this hero.
+
+Coverflow supports arrows, dots, scoped keyboard navigation and horizontal-intent swipe. Autoplay defaults to 5000ms and pauses on hover, focus, offscreen, hidden tabs, global pause or reduced motion; manual navigation pauses until resumed. Its CTA selects the matching first pint layer, scrolls to the homepage builder and focuses the native selector. The pint is a demonstration, with no checkout.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use cocoa structure on pale cream and flavour surfaces.
+- **Do** keep cocoa structure on pale surfaces and cream foregrounds on berry or midnight.
 - **Do** keep Jakarta headings and Inter reading/control text.
 - **Do** preserve keyboard focus, pressed/checked semantics and reduced-motion behavior.
-- **Do** use soft product depth, frosted overlays and restrained illuminated edges.
-- **Do** verify desktop, mobile, 3D fallback and real touch behavior before visual approval.
+- **Do** keep the homepage coverflow directly after the hero and retain the full menu collection.
 
 ### Don't:
-- **Don't** restore the superseded teal/serif system on new v4 surfaces.
-- **Don't** turn tiny annotations into the default body-text scale.
-- **Don't** present illustrative imagery, quotes or location layouts as verified brand evidence.
-- **Don't** make optional motion or WebGL a requirement for reading or completing controls.
-
+- **Don't** present illustrative imagery or location previews as verified brand evidence.
+- **Don't** make optional motion a requirement for reading or completing controls.
+- **Don't** turn tiny annotations or decorative eyebrows into default reading or heading roles.

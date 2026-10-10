@@ -1,21 +1,19 @@
 # Mr Gelato frontend sample
 
-The current hero uses `public/assets/hero-realistic.png`, an illustrative AI-generated gelato cone with floating motion and spring-based pointer tilt. It is an animated product image rather than a rotatable mesh. Hero motion is implemented in `src/gelato.js` and `src/gelato.css`.
+Berry-red illustrative photography leads the homepage, followed immediately by the interactive flavour coverflow. The separate menu keeps all 24 flavours, filter/search controls and its concept pint builder. This static frontend has no live checkout or backend.
 
-Open `public/index.html` for the prebuilt sample. No API key or server is required.
+Run from this source folder with Node.js installed:
 
-To edit and rebuild, install Node.js, then run:
+```powershell
+npm.cmd ci
+npm.cmd run build
+npm.cmd run preview
 ```
-npm install
-npm run build
-npm run preview
-```
-Preview: http://localhost:4188
 
-Edit HTML in `public/`, styles in `src/gelato.css`, interactions in `src/gelato.js`, and the procedural cone in `src/gelato-3d.js`.
+Open http://localhost:4188. The preview serves `public/`; prebuilt `public/index.html` can also be opened directly, though the local server is the intended preview. `npm.cmd run typecheck` checks TypeScript separately; build includes it.
 
-All generated photography is illustrative. Vegan suitability, nutrition, testimonials, current contacts/locations/hours/social links require approval. Newsletter and pint functions are demonstrations; there is no backend.
+Edit HTML in `public/`, shared styles and static interactions in `src/gelato.css` and `src/gelato.js`, berry overrides in `src/berry-redesign.css`, and React mounts in `src/menu.tsx`. The hero island is `components/ui/berry-hero-image.tsx`; its image is `public/assets/hero-berry.png`. Carousel source is `components/ui/3-d-coverflow-carousel.tsx` with `src/coverflow.css`. Build emits bundled JavaScript and CSS into `public/`; publish the contents of that folder for static hosting.
 
-The menu coverflow uses React and TypeScript. Its reusable component lives in `components/ui/3-d-coverflow-carousel.tsx`, with styles in `src/coverflow.css` and its page entry in `src/menu.tsx`. Read `INTEGRATION.md` for the shadcn-compatible aliases, props, and setup instructions. Run `npm run typecheck` to check TypeScript.
+Local Jakarta and Inter fonts are included. Carousel stock photos can require network access and have an illustrative local fallback. No API key is required. The retained procedural `src/gelato-3d.js` is built but is not loaded by the current hero.
 
-Read SAMPLE-NOTES.md before public release. The new coverflow photographs are illustrative stock imagery, rather than photographs of actual Mr Gelato products.
+Read `INTEGRATION.md` for React/TypeScript aliases and carousel props, `DESIGN.md` for the current source-derived system, and `SAMPLE-NOTES.md` before release. Photography, pint sizes/toppings and the location layout are illustrative. Newsletter input is neither sent nor stored. Nutrition, dietary suitability, current outlet details and social links require brand confirmation. The docs do not assert whole-site review approval or pixel-exact reference matching.
