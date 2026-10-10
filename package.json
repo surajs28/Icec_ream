@@ -1,0 +1,19 @@
+{
+  "name": "mr-gelato-sample",
+  "version": "4.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.cjs && tailwindcss -i src/gelato.css -o public/gelato.css --minify",
+    "preview": "node preview.cjs"
+  },
+  "dependencies": {
+    "three": "^0.186.1",
+    "lucide": "^1.54.0",
+    "canvas-confetti": "^1.9.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.3.0",
+    "@tailwindcss/cli": "^4.3.0"
+  }
+}
