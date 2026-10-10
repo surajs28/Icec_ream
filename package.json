@@ -3,17 +3,26 @@
   "version": "4.0.0",
   "private": true,
   "scripts": {
-    "build": "node build.cjs && tailwindcss -i src/gelato.css -o public/gelato.css --minify",
-    "preview": "node preview.cjs"
+    "build": "npm run typecheck && node build.cjs && tailwindcss -i src/gelato.css -o public/gelato.css --minify",
+    "preview": "node preview.cjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "three": "^0.186.1",
+    "canvas-confetti": "^1.9.4",
+    "clsx": "^2.1.1",
     "lucide": "^1.54.0",
-    "canvas-confetti": "^1.9.4"
+    "lucide-react": "^1.54.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwind-merge": "^3.7.0",
+    "three": "^0.186.1"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "esbuild": "^0.28.2",
     "tailwindcss": "^4.3.0",
-    "@tailwindcss/cli": "^4.3.0"
+    "typescript": "^7.0.2"
   }
 }
