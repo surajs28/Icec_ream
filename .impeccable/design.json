@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T07:08:31.687Z",
+  "title": "Design System: Mr Gelato",
+  "extensions": {
+    "colorMeta": {
+      "berry": {
+        "role": "primary",
+        "displayName": "Berry",
+        "canonical": "#a50e36",
+        "tonalRamp": [
+          "oklch(15% 0.1783 15.61)",
+          "oklch(26% 0.1783 15.61)",
+          "oklch(38% 0.1783 15.61)",
+          "oklch(49% 0.1783 15.61)",
+          "oklch(61% 0.1783 15.61)",
+          "oklch(72% 0.1783 15.61)",
+          "oklch(84% 0.1783 15.61)",
+          "oklch(95% 0.1783 15.61)"
+        ]
+      },
+      "berry-dark": {
+        "role": "primary",
+        "displayName": "Deep Berry",
+        "canonical": "#7f0d2c",
+        "tonalRamp": [
+          "oklch(15% 0.1449 13.75)",
+          "oklch(26% 0.1449 13.75)",
+          "oklch(38% 0.1449 13.75)",
+          "oklch(49% 0.1449 13.75)",
+          "oklch(61% 0.1449 13.75)",
+          "oklch(72% 0.1449 13.75)",
+          "oklch(84% 0.1449 13.75)",
+          "oklch(95% 0.1449 13.75)"
+        ]
+      },
+      "berry-light": {
+        "role": "primary",
+        "displayName": "Light Berry",
+        "canonical": "#f7dce2",
+        "tonalRamp": [
+          "oklch(15% 0.0308 2.61)",
+          "oklch(26% 0.0308 2.61)",
+          "oklch(38% 0.0308 2.61)",
+          "oklch(49% 0.0308 2.61)",
+          "oklch(61% 0.0308 2.61)",
+          "oklch(72% 0.0308 2.61)",
+          "oklch(84% 0.0308 2.61)",
+          "oklch(95% 0.0308 2.61)"
+        ]
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Cream",
+        "canonical": "#fff9ef",
+        "tonalRamp": [
+          "oklch(15% 0.0147 80.71)",
+          "oklch(26% 0.0147 80.71)",
+          "oklch(38% 0.0147 80.71)",
+          "oklch(49% 0.0147 80.71)",
+          "oklch(61% 0.0147 80.71)",
+          "oklch(72% 0.0147 80.71)",
+          "oklch(84% 0.0147 80.71)",
+          "oklch(95% 0.0147 80.71)"
+        ]
+      },
+      "cocoa": {
+        "role": "neutral",
+        "displayName": "Cocoa",
+        "canonical": "#38251f",
+        "tonalRamp": [
+          "oklch(15% 0.0311 38.26)",
+          "oklch(26% 0.0311 38.26)",
+          "oklch(38% 0.0311 38.26)",
+          "oklch(49% 0.0311 38.26)",
+          "oklch(61% 0.0311 38.26)",
+          "oklch(72% 0.0311 38.26)",
+          "oklch(84% 0.0311 38.26)",
+          "oklch(95% 0.0311 38.26)"
+        ]
+      },
+      "pistachio": {
+        "role": "secondary",
+        "displayName": "Pistachio",
+        "canonical": "#d8e8b5",
+        "tonalRamp": [
+          "oklch(15% 0.0693 121.93)",
+          "oklch(26% 0.0693 121.93)",
+          "oklch(38% 0.0693 121.93)",
+          "oklch(49% 0.0693 121.93)",
+          "oklch(61% 0.0693 121.93)",
+          "oklch(72% 0.0693 121.93)",
+          "oklch(84% 0.0693 121.93)",
+          "oklch(95% 0.0693 121.93)"
+        ]
+      },
+      "strawberry": {
+        "role": "secondary",
+        "displayName": "Strawberry",
+        "canonical": "#f2b7c9",
+        "tonalRamp": [
+          "oklch(15% 0.0718 358.70)",
+          "oklch(26% 0.0718 358.70)",
+          "oklch(38% 0.0718 358.70)",
+          "oklch(49% 0.0718 358.70)",
+          "oklch(61% 0.0718 358.70)",
+          "oklch(72% 0.0718 358.70)",
+          "oklch(84% 0.0718 358.70)",
+          "oklch(95% 0.0718 358.70)"
+        ]
+      },
+      "midnight": {
+        "role": "tertiary",
+        "displayName": "Midnight",
+        "canonical": "#182b29",
+        "tonalRamp": [
+          "oklch(15% 0.0252 187.39)",
+          "oklch(26% 0.0252 187.39)",
+          "oklch(38% 0.0252 187.39)",
+          "oklch(49% 0.0252 187.39)",
+          "oklch(61% 0.0252 187.39)",
+          "oklch(72% 0.0252 187.39)",
+          "oklch(84% 0.0252 187.39)",
+          "oklch(95% 0.0252 187.39)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Cocoa",
+        "canonical": "#6c584d",
+        "tonalRamp": [
+          "oklch(15% 0.0316 50.41)",
+          "oklch(26% 0.0316 50.41)",
+          "oklch(38% 0.0316 50.41)",
+          "oklch(49% 0.0316 50.41)",
+          "oklch(61% 0.0316 50.41)",
+          "oklch(72% 0.0316 50.41)",
+          "oklch(84% 0.0316 50.41)",
+          "oklch(95% 0.0316 50.41)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Warm Line",
+        "canonical": "#d9cfc0",
+        "tonalRamp": [
+          "oklch(15% 0.0232 78.20)",
+          "oklch(26% 0.0232 78.20)",
+          "oklch(38% 0.0232 78.20)",
+          "oklch(49% 0.0232 78.20)",
+          "oklch(61% 0.0232 78.20)",
+          "oklch(72% 0.0232 78.20)",
+          "oklch(84% 0.0232 78.20)",
+          "oklch(95% 0.0232 78.20)"
+        ]
+      },
+      "focus": {
+        "role": "neutral",
+        "displayName": "Leaf Focus",
+        "canonical": "#406548",
+        "tonalRamp": [
+          "oklch(15% 0.0632 150.23)",
+          "oklch(26% 0.0632 150.23)",
+          "oklch(38% 0.0632 150.23)",
+          "oklch(49% 0.0632 150.23)",
+          "oklch(61% 0.0632 150.23)",
+          "oklch(72% 0.0632 150.23)",
+          "oklch(84% 0.0632 150.23)",
+          "oklch(95% 0.0632 150.23)"
+        ]
+      },
+      "field-line": {
+        "role": "neutral",
+        "displayName": "Field Line",
+        "canonical": "#b7aa98",
+        "tonalRamp": [
+          "oklch(15% 0.0293 76.13)",
+          "oklch(26% 0.0293 76.13)",
+          "oklch(38% 0.0293 76.13)",
+          "oklch(49% 0.0293 76.13)",
+          "oklch(61% 0.0293 76.13)",
+          "oklch(72% 0.0293 76.13)",
+          "oklch(84% 0.0293 76.13)",
+          "oklch(95% 0.0293 76.13)"
+        ]
+      },
+      "filter-surface": {
+        "role": "neutral",
+        "displayName": "Filter Surface",
+        "canonical": "#f0e9dd",
+        "tonalRamp": [
+          "oklch(15% 0.0177 81.33)",
+          "oklch(26% 0.0177 81.33)",
+          "oklch(38% 0.0177 81.33)",
+          "oklch(49% 0.0177 81.33)",
+          "oklch(61% 0.0177 81.33)",
+          "oklch(72% 0.0177 81.33)",
+          "oklch(84% 0.0177 81.33)",
+          "oklch(95% 0.0177 81.33)"
+        ]
+      },
+      "outline-hover": {
+        "role": "neutral",
+        "displayName": "Outline Hover",
+        "canonical": "#eee8dc",
+        "tonalRamp": [
+          "oklch(15% 0.0173 84.59)",
+          "oklch(26% 0.0173 84.59)",
+          "oklch(38% 0.0173 84.59)",
+          "oklch(49% 0.0173 84.59)",
+          "oklch(61% 0.0173 84.59)",
+          "oklch(72% 0.0173 84.59)",
+          "oklch(84% 0.0173 84.59)",
+          "oklch(95% 0.0173 84.59)"
+        ]
+      },
+      "nav-glass": {
+        "role": "neutral",
+        "displayName": "Navigation Glass",
+        "canonical": "rgba(255,249,239,.85)",
+        "tonalRamp": [
+          "oklch(15% 0.0147 80.71)",
+          "oklch(26% 0.0147 80.71)",
+          "oklch(38% 0.0147 80.71)",
+          "oklch(49% 0.0147 80.71)",
+          "oklch(61% 0.0147 80.71)",
+          "oklch(72% 0.0147 80.71)",
+          "oklch(84% 0.0147 80.71)",
+          "oklch(95% 0.0147 80.71)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Berry hero display",
+        "purpose": "Homepage hero; responsive variants are documented in DESIGN.md."
+      },
+      "body": {
+        "displayName": "Reading text",
+        "purpose": "Inter reading and control text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "coverflow-card",
+        "value": "0 24px 50px #0005",
+        "purpose": "Photographic coverflow depth."
+      },
+      {
+        "name": "builder-ambient",
+        "value": "0 20px 70px rgba(64,43,30,.08)",
+        "purpose": "Pint container separation."
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "0 12px 18px #38251f12",
+        "purpose": "Expanded mobile navigation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "hero-pointer-spring",
+        "value": "stiffness: 100; damping: 10; x: ±4px; y: ±3px; scale: 1.025",
+        "purpose": "Fine-pointer photographic depth, gated by reduced motion and pause."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.23,1,.32,1)",
+        "purpose": "Shared restrained control transforms."
+      },
+      {
+        "name": "coverflow-autoplay",
+        "value": "5000ms; minimum 3000ms",
+        "purpose": "Optional rotation paused by interaction and visibility."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked",
+        "value": "800px"
+      },
+      {
+        "name": "coverflow-phone",
+        "value": "600px"
+      },
+      {
+        "name": "small-phone",
+        "value": "420px"
+      },
+      {
+        "name": "berry-small",
+        "value": "400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Cocoa action on pale information surfaces.",
+      "html": "<button class=\"ds-primary\">Save your mix</button>",
+      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;background:var(--cocoa,#38251f);color:var(--cream,#fff9ef);border:1px solid var(--cocoa,#38251f);border-radius:100px;min-height:55px;padding:14px 24px;font:650 14px Inter,Arial,sans-serif;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms}.ds-primary:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}.ds-primary:hover{background:var(--midnight,#182b29);box-shadow:0 6px 18px #38251f22}"
+    },
+    {
+      "name": "Hero primary action",
+      "kind": "button",
+      "refersTo": "hero-primary",
+      "description": "Cream action on the berry photographic ground.",
+      "html": "<div class=\"ds-hero-ground\"><button class=\"ds-hero\">Explore flavours</button></div>",
+      "css": ".ds-hero{display:inline-flex;align-items:center;justify-content:center;background:var(--cream,#fff9ef);color:var(--cocoa,#38251f);border:1px solid var(--cocoa,#38251f);border-radius:100px;min-height:55px;padding:14px 24px;font:650 14px Inter,Arial,sans-serif;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms}.ds-hero:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}.ds-hero-ground{background:var(--berry,#a50e36);padding:24px}.ds-hero{min-height:52px}.ds-hero:hover{background:#f4e6d4}"
+    },
+    {
+      "name": "Outline button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary pill action on pale surfaces.",
+      "html": "<button class=\"ds-outline\">Meet Mr Gelato</button>",
+      "css": ".ds-outline{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--cocoa,#38251f);border:1px solid var(--cocoa,#38251f);border-radius:100px;min-height:55px;padding:14px 24px;font:650 14px Inter,Arial,sans-serif;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms}.ds-outline:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}.ds-outline:hover{background:#eee8dc}"
+    },
+    {
+      "name": "Contact field",
+      "kind": "input",
+      "refersTo": "contact-field",
+      "description": "Cream native field with warm stroke.",
+      "html": "<label class=\"ds-field-label\">Your email<input class=\"ds-field\" type=\"email\" placeholder=\"you@example.com\"></label>",
+      "css": ".ds-field-label{display:block;font:650 14px Inter,Arial,sans-serif;color:var(--cocoa,#38251f)}.ds-field{display:block;width:100%;font:400 14px Inter,Arial,sans-serif;background:var(--cream,#fff9ef);color:var(--cocoa,#38251f);border:1px solid #b7aa98;border-radius:10px;padding:12px;margin-top:8px}.ds-field:hover{border-color:var(--cocoa,#38251f)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}"
+    },
+    {
+      "name": "Selected filter chip",
+      "kind": "chip",
+      "refersTo": "filter-chip-selected",
+      "description": "Pressed filter selection, paired with aria-pressed.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"true\">All flavours</button>",
+      "css": ".ds-chip{border:0;background:var(--cocoa,#38251f);color:var(--cream,#fff9ef);padding:9px 17px;border-radius:100px;font:400 12px Inter,Arial,sans-serif;transition:background 160ms,transform 160ms}.ds-chip:hover{background:var(--midnight,#182b29)}.ds-chip:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}"
+    },
+    {
+      "name": "Inner-page navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Frosted cream navigation; homepage uses the berry inversion.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#home\" aria-current=\"page\">Home</a><a href=\"#flavours\">Flavours</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px;background:var(--nav-glass,rgba(255,249,239,.85));color:var(--cocoa,#38251f);padding:16px 20px;backdrop-filter:blur(16px)}.ds-nav a{position:relative;color:inherit;text-decoration:none;font:550 13px Inter,Arial,sans-serif;padding:16px 0}.ds-nav a[aria-current=page]:after{content:\"\";position:absolute;bottom:6px;left:calc(50% - 7.5px);width:15px;height:3px;border-radius:3px;background:var(--cocoa,#38251f)}.ds-nav a:hover{color:#749056}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}"
+    },
+    {
+      "name": "Coverflow card",
+      "kind": "card",
+      "description": "Static preview of the active photographic-card content surface.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-tag\">Fruit favourite</span><h3>Mango</h3><p>A little sunshine</p><button class=\"ds-card-cta\">Build with Mango</button></article>",
+      "css": ".ds-card{max-width:320px;padding:22px 24px;border-radius:20px;background:linear-gradient(180deg,#3d332b,#081717);border:1px solid #fff9ef33;box-shadow:0 24px 50px #0005;text-align:center;color:var(--cream,#fff9ef)}.ds-tag{display:block;text-align:right;font:400 11px Inter,Arial,sans-serif}.ds-card h3{font:800 34px/1.1 Jakarta,Arial,sans-serif;letter-spacing:-.035em;margin:80px 0 12px}.ds-card p{font:600 15px/1.4 Inter,Arial,sans-serif;color:var(--pistachio,#d8e8b5)}.ds-card-cta{padding:11px 18px;min-height:44px;border:0;border-radius:30px;background:var(--pistachio,#d8e8b5);color:var(--midnight,#182b29);font:750 12px Inter,Arial,sans-serif}.ds-card-cta:hover{background:var(--pink,#f2b7c9)}.ds-card-cta:active{transform:scale(.96)}.ds-card-cta:focus-visible{outline:3px solid #f2b7c9;outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Happy Scoop Stage",
+    "overview": "Berry red sets an appetising photographic stage; cream actions and heavy, close-set headings keep Mr Gelato immediate. Warm cream and cocoa support the reading surfaces, while pistachio and strawberry remain flavour accents. The approved hero direction replaces the earlier floating cone composition.\n\nGenerous section separation surrounds compact navigation and controls. Product depth responds gently to a fine pointer; coverflow exploration and the concept pint remain optional enhancements to a frontend-only sample.",
+    "keyCharacteristics": [
+      "Berry-red photography with cream foreground actions.",
+      "Heavy Jakarta headings with restrained Inter reading text.",
+      "Cream information surfaces, pill controls and rounded product imagery.",
+      "Midnight coverflow with soft photographic depth.",
+      "Optional motion with reduced-motion and global pause controls."
+    ],
+    "rules": [
+      {
+        "name": "The Cocoa Structure Rule",
+        "body": "Keep cocoa text and outlines as the default structure on pale surfaces; use cream foregrounds on berry and midnight grounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Use Jakarta for brand and headings; use Inter for reading, navigation and controls.",
+        "section": "typography"
+      },
+      {
+        "name": "The Soft Stage Rule",
+        "body": "Keep product depth diffuse and information surfaces quiet; use the existing frosted overlays where they support labels.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep cocoa structure on pale surfaces and cream foregrounds on berry or midnight.",
+      "Do keep Jakarta headings and Inter reading/control text.",
+      "Do preserve keyboard focus, pressed/checked semantics and reduced-motion behavior.",
+      "Do keep the homepage coverflow directly after the hero and retain the full menu collection."
+    ],
+    "donts": [
+      "Don't present illustrative imagery or location previews as verified brand evidence.",
+      "Don't make optional motion a requirement for reading or completing controls.",
+      "Don't turn tiny annotations or decorative eyebrows into default reading or heading roles.\r"
+    ]
+  }
+}
