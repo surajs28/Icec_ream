@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./coverflow.css";
 @import "./berry-redesign.css";
+@import "./ivory-redesign.css";
 @source "../public/*.html";
 @source "./gelato.js";
 @source "../components/**/*.tsx";

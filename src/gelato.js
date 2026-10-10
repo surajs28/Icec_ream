@@ -1,3 +1,4 @@
+import { signatureFlavours } from "./signature-flavours";
 import {createIcons,ArrowUpRight,ArrowRight,Menu, X, Sparkles, Heart, MoveHorizontal,RotateCcw,Asterisk,Search,Info,Wind,Cherry,IceCreamCone,Download,Star,MapPin,Clock3,Plus,Minus,Camera,Users,Pause,Play,Cake,BriefcaseBusiness} from 'lucide';
 import confetti from 'canvas-confetti';
 const iconSet={ArrowUpRight,ArrowRight,Menu,X,Sparkles,Heart,MoveHorizontal,RotateCcw,Asterisk,Search,Info,Wind,Cherry,IceCreamCone,Download,Star,MapPin,Clock3,Plus,Minus,Camera,Users,Pause,Play,Cake,BriefcaseBusiness};
@@ -22,6 +23,7 @@ document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))close
 matchMedia('(min-width:801px)').addEventListener?.('change',e=>{if(e.matches)closeMenu();});
 
 const products=[
+ ...signatureFlavours.map(p=>({name:p.name,category:"Signature",colour:p.colour,tile:"#fff9ef",atlasPosition:p.position,copy:p.copy})),
  {name:'Mango',category:'Seasonal',colour:'#f0c677',tile:'#f5e1b3',image:'mango',copy:'A sunny little escape, by the scoop.'},
  {name:'Chocolate',category:'Classic',colour:'#785246',tile:'#ead4c0',image:'chocolate',copy:'For the days that call for chocolate.'},
  {name:'Custard Apple',category:'Seasonal',colour:'#dadbc1',tile:'#e3eacb',image:'custard',copy:'Sitaphal. Sarifa. A familiar kind of happy.'},
@@ -40,10 +42,10 @@ function renderMenu(){
  for(const product of selected){
   const card=document.createElement('article');card.className='flavour-card';card.style.setProperty('--tile',product.tile);
   const art=document.createElement('div');art.className='flavour-image';
-  if(product.image){const image=document.createElement('img');image.src=`assets/plates/${product.image}.png`;image.alt=`Illustrative ${product.name.toLowerCase()} gelato`;image.loading='lazy';image.width=1536;image.height=1024;art.append(image);}else{const word=document.createElement('span');word.className='flavour-monogram';word.textContent=product.name;word.setAttribute('aria-hidden','true');art.append(word);}
+  if(product.atlasPosition){const image=document.createElement("div");image.className="signature-menu-photo";image.setAttribute("role","img");image.setAttribute("aria-label",`Illustrative ${product.name} gelato`);image.style.backgroundPosition=product.atlasPosition;art.append(image);}else if(product.image){const image=document.createElement('img');image.src=`assets/plates/${product.image}.png`;image.alt=`Illustrative ${product.name.toLowerCase()} gelato`;image.loading='lazy';image.width=1536;image.height=1024;art.append(image);}else{const word=document.createElement('span');word.className='flavour-monogram';word.textContent=product.name;word.setAttribute('aria-hidden','true');art.append(word);}
   const pill=document.createElement('span');pill.className='flavour-pill';pill.textContent=product.category;art.append(pill);
   const h=document.createElement('h3');h.textContent=product.name;const p=document.createElement('p');p.textContent=product.copy;
-  const bottom=document.createElement('div');bottom.className='flavour-bottom';const nutrition=document.createElement('span');nutrition.className='nutrition';nutrition.textContent='kcal · details pending';
+  const bottom=document.createElement('div');bottom.className='flavour-bottom';const nutrition=document.createElement('span');nutrition.className='nutrition';nutrition.textContent='Ingredients awaiting approval';
   const add=document.createElement('button');add.type='button';add.className='add-flavour';add.textContent='Add to my mix';add.setAttribute('aria-label',`Add ${product.name} to my pint`);const icon=document.createElement('i');icon.dataset.lucide='plus';add.append(icon);
   add.addEventListener('click',e=>{const select=$('#layer-1');if(select){select.value=product.name;updatePint();$('#mix-status').textContent=`${product.name} added to layer one. Choose your other layers below.`;$('#builder').scrollIntoView({behavior:reduced()||e.detail===0?'instant':'smooth'});select.focus({preventScroll:true});}});
   bottom.append(nutrition,add);card.append(art,h,p,bottom);featured.append(card);attachTilt(card);
