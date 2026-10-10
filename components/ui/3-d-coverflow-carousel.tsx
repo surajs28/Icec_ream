@@ -115,7 +115,7 @@ export function CoverFlowCarousel({
         <img src={active.img} alt="" loading="lazy" decoding="async" onError={e => { e.currentTarget.style.visibility = "hidden"; }} />
       </div>
       <div className="coverflow-inner relative z-10 mx-auto flex w-full flex-col items-center">
-        <div className="coverflow-heading"><p>Explore the collection</p><h2 id={labelId}>{sectionLabel}</h2><span>Swipe, tap a card, or use the arrows to discover your next scoop.</span></div>
+        <div className="coverflow-heading"><h2 id={labelId}>{sectionLabel}</h2><span>Swipe, tap a card, or use the arrows to discover your next scoop.</span></div>
         <div ref={stage} className="coverflow-stage relative flex w-full items-center justify-center"
           style={{ perspective: "1400px", touchAction: "pan-y" }}
           onTouchStart={e => { if (e.touches.length === 1) touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }}
@@ -164,7 +164,7 @@ export function CoverFlowCarousel({
             {paused || reduceMotion ? <Play size={17} aria-hidden="true" /> : <Pause size={17} aria-hidden="true" />}
           </button>}
         </div>
-        <p className="coverflow-credit">Illustrative photography. Explore all 24 flavours in the menu below.</p>
+        <p className="coverflow-credit">Illustrative photography. Explore all 24 flavours on the menu.</p>
         <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</p>
       </div>
     </section>
@@ -173,3 +173,4 @@ export function CoverFlowCarousel({
 
 export const Component = CoverFlowCarousel;
 export default CoverFlowCarousel;
+
