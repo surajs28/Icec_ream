@@ -19,13 +19,16 @@ const menu=$('.menu-toggle'),nav=$('#main-nav');
 const desktopNav=matchMedia('(min-width:801px)');let navAnimation;
 function setMenu(open,animateChange=false){
  if(!nav||!menu)return;
+ const interrupted=navAnimation?.playState==='running';
+ const current=interrupted?getComputedStyle(nav):null;
+ const from=current?{opacity:current.opacity,transform:current.transform}:null;
  navAnimation?.cancel();menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');
  nav.inert=!desktopNav.matches&&!open;
  if(open)nav.classList.add('open');
  const finish=()=>{if(menu.getAttribute('aria-expanded')!=='true')nav.classList.remove('open');};
  if(animateChange&&!reduced()&&!desktopNav.matches&&nav.animate){
-  navAnimation=nav.animate(open?[{opacity:0,transform:'translateY(-8px)'},{opacity:1,transform:'translateY(0)'}]:[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-6px)'}],{duration:open?200:150,easing:'cubic-bezier(.23,1,.32,1)'});
-  navAnimation.onfinish=finish;
+  navAnimation=nav.animate([from||(open?{opacity:0,transform:'translateY(-8px)'}:{opacity:1,transform:'translateY(0)'}),open?{opacity:1,transform:'translateY(0)'}:{opacity:0,transform:'translateY(-6px)'}],{duration:open?200:150,easing:'cubic-bezier(.23,1,.32,1)'});
+  navAnimation.onfinish=()=>{navAnimation=null;finish();};
  }else finish();
 }
 menu?.addEventListener('click',e=>setMenu(menu.getAttribute('aria-expanded')!=='true',e.detail>0));
