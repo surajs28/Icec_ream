@@ -88,5 +88,28 @@ window.addEventListener('gelato-motion',()=>{if(reduced())$$('.magnetic,.flavour
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){observer.unobserve(entry.target);if(!reduced()&&entry.target.animate)entry.target.animate([{opacity:.35,transform:'translateY(16px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,easing:'cubic-bezier(.23,1,.32,1)',fill:'none'});}},{threshold:.15});$$('.section-head,.story-text,.story-visual,.visit-copy').forEach(el=>observer.observe(el));}
 if($('.hero-copy')&&!reduced()){[$('.hero-copy h1'),$('.hero-copy>p'),$('.hero-actions')].forEach((el,i)=>el?.animate?.([{opacity:.25,transform:'translateY(18px)'},{opacity:1,transform:'translateY(0)'}],{duration:650,delay:i*65,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));}
 $$('[data-scoop]').forEach(button=>button.addEventListener('click',()=>{$$('[data-scoop]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));window.dispatchEvent(new CustomEvent('gelato-scoop',{detail:button.dataset.scoop}));}));
-const stage=$('#gelato-stage');if(stage){const load=()=>{const script=document.createElement('script');script.src='gelato-3d.js';script.defer=true;script.onerror=()=>{$('#scene-status').textContent='Showing the product image. 3D could not load.';};document.body.append(script);};if('requestIdleCallback' in window)requestIdleCallback(load,{timeout:1000});else setTimeout(load,250);}
+const stage=$('#gelato-stage');
+if(stage?.dataset.hero==='realistic'){
+ const tilt=stage.querySelector('.hero-product-tilt');let visible=true,frame=0,last=0;
+ let x=0,y=0,vx=0,vy=0,tx=0,ty=0;
+ const active=()=>!reduced()&&visible&&!document.hidden;
+ function tick(time){
+  frame=0;if(!active())return;
+  const dt=Math.min((time-last)/1000||1/60,1/30);last=time;
+  vx+=(100*(tx-x)-10*vx)*dt;vy+=(100*(ty-y)-10*vy)*dt;x+=vx*dt;y+=vy*dt;
+  tilt.style.transform=`perspective(1000px) rotateX(${x}deg) rotateY(${y}deg)`;
+  if(Math.abs(tx-x)+Math.abs(ty-y)+Math.abs(vx)+Math.abs(vy)>.02)frame=requestAnimationFrame(tick);
+ }
+ function start(){if(!frame&&active()){last=0;frame=requestAnimationFrame(tick);}}
+ function reset(){tx=ty=0;start();}
+ function syncHero(){
+  stage.classList.toggle('hero-idle-paused',!active());
+  if(!active()){cancelAnimationFrame(frame);frame=0;x=y=vx=vy=tx=ty=0;tilt.style.transform='';}
+ }
+ stage.addEventListener('pointermove',e=>{if(!active()||!fine.matches||e.pointerType==='touch')return;const r=stage.getBoundingClientRect();tx=-((e.clientY-r.top)/r.height-.5)*6;ty=((e.clientX-r.left)/r.width-.5)*8;start();});
+ stage.addEventListener('pointerleave',reset);
+ window.addEventListener('gelato-motion',syncHero);document.addEventListener('visibilitychange',syncHero);
+ if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;syncHero();},{threshold:.05}).observe(stage);
+ window.addEventListener('pagehide',()=>cancelAnimationFrame(frame));syncHero();
+}else if(stage){const load=()=>{const script=document.createElement('script');script.src='gelato-3d.js';script.defer=true;script.onerror=()=>{$('#scene-status').textContent='Showing the product image. 3D could not load.';};document.body.append(script);};if('requestIdleCallback' in window)requestIdleCallback(load,{timeout:1000});else setTimeout(load,250);}
 icons();
