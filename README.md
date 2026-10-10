@@ -1,5 +1,7 @@
 # Mr Gelato frontend sample
 
+The current hero uses `public/assets/hero-realistic.png`, an illustrative AI-generated gelato cone with floating motion and spring-based pointer tilt. It is an animated product image rather than a rotatable mesh. Hero motion is implemented in `src/gelato.js` and `src/gelato.css`.
+
 Open `public/index.html` for the prebuilt sample. No API key or server is required.
 
 To edit and rebuild, install Node.js, then run:

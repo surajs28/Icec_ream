@@ -1,5 +1,7 @@
 # Mr Gelato — revision 4
 
+Hero update: the homepage now uses an AI-generated photorealistic strawberry, pistachio and chocolate waffle cone cutout, with a one-time entrance, gentle floating motion and spring-based desktop pointer tilt. Motion pauses offscreen, in hidden tabs and under reduced-motion preferences. This is an animated image, not a rotatable 3D model. The earlier procedural Three.js source remains available in the editable project.
+
 Open `site/index.html` to explore the sample. All dependencies, fonts and assets used by the pages are bundled locally. No server or API key is required for the static preview.
 
 ## Included

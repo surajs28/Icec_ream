@@ -108,7 +108,7 @@ components:
 
 Warm cream and cocoa make an approachable setting for gelato. Pistachio and strawberry add flavour and playfulness; bold modern headings keep the composition direct. Rounded product stages, photographic panels and quiet frosted overlays give the collection room to lead.
 
-The system pairs generous section separation with compact navigation and controls. Motion responds to exploration: a cone can rotate, flavour cards tilt and a custom pint changes as choices are made. Product images remain available when the 3D scene cannot load.
+The system pairs generous section separation with compact navigation and controls. Motion responds to exploration: the realistic gelato hero floats and tilts gently, flavour cards tilt and a custom pint changes as choices are made. The hero uses a transparent product image with no WebGL dependency.
 
 **Evidence and status:** Source-extracted from `work/motion-build/gelato.css`, `gelato.js`, `gelato-3d.js` and `outputs/site/index.html`, reconciled with `work/design-direction-v4.md` and PRODUCT.md's latest approved implementation. This approved identity replacement supersedes the teal/serif system archived in `work/design-before-v4/`. No rendered desktop or mobile screenshots were available. WebGL output, animation feel, font rendering and physical-device gestures remain unverified. This document records implementation, not launch approval.
 
@@ -169,7 +169,7 @@ The centered shell stops at 1280px. Side gutters step through the frontmatter de
 
 Desktop flavour collections use three columns with 30px row gaps and the recorded grid-gap between columns; below 800px they use two. Hero, story, builder, visit and contact layouts become single-column at 800px. Story bento moves from `1fr 1fr 2fr` to two columns with the wide tile spanning both; its intermediate tablet ratio is `1fr 1fr 1.5fr`. Contact starts at `1.2fr 1fr`. Footer starts with four unequal columns and becomes two, with its brand spanning both.
 
-The sticky header is 91px tall desktop and 76px mobile. At 800px its navigation becomes a disclosed vertical panel. Safe-area top padding, `viewport-fit=cover`, touch manipulation and horizontal cone drag with vertical page panning exist in source. Actual phone behavior remains a device verification gate.
+The sticky header is 91px tall desktop and 76px mobile. At 800px its navigation becomes a disclosed vertical panel. Safe-area top padding, `viewport-fit=cover`, touch manipulation and a hero pointer tilt limited to fine pointers exist in source. Actual phone behavior remains a device verification gate.
 
 ## Elevation & Depth
 
@@ -205,7 +205,7 @@ Contact fields use cream fill, a warm field stroke, field radius and recorded pa
 Sticky frosted cream, a compact Jakarta wordmark and Inter links. Current page gets a small cocoa line; fine-pointer hover uses green. The mobile menu reveals vertical navigation and communicates expanded state. Keyboard focus stays visible.
 
 ### Product stage and pint builder
-The separately loaded Three.js cone sits over a pistachio orbit. Controls provide scoop colours, horizontal drag, keyboard rotation and reset. Its fallback is an illustrative cup photograph despite the interactive model being a cone. The builder combines a shaped scoop preview with native layer, size and topping controls. Neither is a confirmed catalogue photograph or an ordering flow.
+A photorealistic AI-generated strawberry, pistachio and chocolate waffle cone sits over a pistachio orbit. The transparent image has a 900ms entrance, a subtle six-second float, and desktop pointer tilt using a spring with stiffness 100 and damping 10. Motion pauses offscreen, in hidden tabs and when reduced motion is enabled. This is an animated image rather than a rotatable mesh. The earlier Three.js source remains available but is not loaded by this hero. The builder combines a shaped scoop preview with native layer, size and topping controls. Neither is a confirmed catalogue photograph or an ordering flow.
 
 Motion uses `cubic-bezier(.23,1,.32,1)`: control transforms 160ms, image/tilt transitions 250ms, section reveals 550ms and hero entrance 650ms with 65ms stagger. The headline gradient runs once over 3.5s. Reduced-motion CSS removes transitions and smooth scrolling; JavaScript gates tilt, magnetism and reveals. The footer toggle pauses optional motion. These timings describe source intent and have not passed rendered motion review.
 
@@ -223,3 +223,4 @@ Motion uses `cubic-bezier(.23,1,.32,1)`: control transforms 160ms, image/tilt tr
 - **Don't** turn tiny annotations into the default body-text scale.
 - **Don't** present illustrative imagery, quotes or location layouts as verified brand evidence.
 - **Don't** make optional motion or WebGL a requirement for reading or completing controls.
+
