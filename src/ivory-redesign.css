@@ -37,3 +37,17 @@ html{scrollbar-color:#aa536a var(--cream)}
 .choice-row input:checked+span,.topping-choices input:checked+span{border-color:var(--berry);background:#f5e6e9}
 .choice-row input:focus-visible+span,.topping-choices input:focus-visible+span{outline-color:var(--berry)}
 .pint-cup small,.choice-row small,.mix-summary>span,.mix-summary small,.control-hint{font-size:12px}
+/* Keep feedback on controls and photographs rather than moving reading layouts. */
+.flavour-card{transition:none;transform-style:flat}
+.signature-menu-photo{transition:transform 250ms var(--ease-out)}
+.coverflow-stage{cursor:grab;user-select:none}
+.coverflow-stage.is-dragging,.coverflow-stage.is-dragging button{cursor:grabbing}
+.coverflow-card{user-select:none}
+.coverflow-cta svg,.category-link svg,.btn svg{transition:transform 160ms var(--ease-out)}
+.site-header nav{transform-origin:top right}
+.filter-group button:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){
+ .flavour-card:hover .signature-menu-photo{transform:scale(1.035)}
+ .flavour-card:hover .flavour-image img{transform:scale(1.035)}
+ .coverflow-cta:hover svg,.cafe-category a:hover .category-link svg,.btn:hover svg{transform:translateX(3px)}
+}
