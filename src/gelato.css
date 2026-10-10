@@ -34,7 +34,7 @@
  @media(max-width:800px){.pint-stage{border-radius:19px 19px 0 0}.pint-controls{border-radius:0 0 19px 19px}}
  .filter-group button:active,.add-flavour:active{transform:scale(.97)}
  .motion-paused{scroll-behavior:auto}.motion-paused *, .motion-paused *:before,.motion-paused *:after{animation-play-state:paused!important;transition-duration:.01ms!important}
- .hero-word{display:inline}.realistic-stage{inset:5px 0 45px;cursor:default;display:grid;place-items:center}
+ .hero-word{display:inline}.realistic-stage{inset:5px 0 45px;cursor:default;display:block}
  .hero-product-entry{width:100%;height:100%;animation:product-enter 900ms var(--ease-out) both}
  .hero-product-tilt,.hero-product-float{width:100%;height:100%}.hero-product-tilt{transform-origin:50% 55%}
  .hero-product-float{animation:product-float 6s ease-in-out infinite}
@@ -46,3 +46,4 @@
  @media(max-width:800px){.realistic-stage{inset:15px 0 35px}.hero-product-label{font-size:10px;padding:10px 14px}}
  @media(prefers-reduced-motion:reduce){.hero-product-entry,.hero-product-float{animation:none!important}}
 }
+
