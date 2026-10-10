@@ -4,6 +4,8 @@ import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { signatureFlavours } from "@/src/signature-flavours";
 import { cn } from "@/lib/utils";
+import { coverflowPose, swipeDirection } from "./carousel-motion";
+import { motion } from "motion/react";
 
 export interface CarouselItem {
   tag?: string;
@@ -56,19 +58,27 @@ export function CoverFlowCarousel({
   const [documentVisible, setDocumentVisible] = useState(true);
   const [stageWidth, setStageWidth] = useState(1000);
   const [announcement, setAnnouncement] = useState("");
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [instant, setInstant] = useState(false);
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const gesture = useRef<{ id: number; x: number; y: number; lastX: number; time: number; velocity: number; active: boolean } | null>(null);
+  const suppressClickUntil = useRef(0);
   const labelId = useId();
   const total = items.length;
   const index = total ? Math.min(currentIndex, total - 1) : 0;
   const active = items[index];
-  const canRotate = autoplay && total > 1 && !hovered && !focused && !paused && !reduceMotion && visible && documentVisible;
+  const canRotate = autoplay && total > 1 && !dragging && !hovered && !focused && !paused && !reduceMotion && visible && documentVisible;
 
   useEffect(() => { setCurrentIndex(prev => total ? Math.min(prev, total - 1) : 0); }, [total]);
   useEffect(() => {
     const query = matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReduceMotion(query.matches || document.documentElement.classList.contains("motion-paused"));
+    const update = () => {
+      const disabled=query.matches || document.documentElement.classList.contains("motion-paused");
+      setReduceMotion(disabled);
+      if(disabled){gesture.current=null;setDragging(false);setDragX(0);}
+    };
     update(); query.addEventListener("change", update); window.addEventListener("gelato-motion", update);
     const visibility = () => setDocumentVisible(!document.hidden);
     visibility(); document.addEventListener("visibilitychange", visibility);
@@ -95,14 +105,28 @@ export function CoverFlowCarousel({
   const goToSlide = (next: number) => { if (!total) return; setCurrentIndex(next); setPaused(true); setAnnouncement(`${items[next].titleLine1}, slide ${next + 1} of ${total}`); };
   useEffect(() => {
     if (!canRotate) return;
-    const interval = window.setInterval(() => move(1, false), Math.max(3000, autoplayDelay));
+    const interval = window.setInterval(() => { setInstant(false); move(1, false); }, Math.max(3000, autoplayDelay));
     return () => window.clearInterval(interval);
   }, [canRotate, autoplayDelay, move]);
 
   if (!total || !active) return null;
   const cardWidth = Math.min(330, Math.max(240, stageWidth * .77));
   const step = stageWidth < 600 ? cardWidth * .77 : 285;
-  const transition = reduceMotion ? "none" : "transform 650ms cubic-bezier(.25,1,.5,1), opacity 450ms ease-out";
+  const transition = reduceMotion || instant || dragging ? { duration: 0 } : { type: "spring" as const, duration: .5, bounce: .2, opacity: { duration: .2 } };
+
+  const finishDrag = (e: React.PointerEvent<HTMLDivElement>, cancelled = false) => {
+    const current = gesture.current;
+    if (!current || current.id !== e.pointerId) return;
+    gesture.current = null;
+    if (current.active) {
+      suppressClickUntil.current = performance.now() + 350;
+      const velocity = performance.now() - current.time < 90 ? current.velocity : 0;
+      const delta = cancelled ? 0 : swipeDirection(current.lastX - current.x, velocity, step);
+      setDragging(false); setDragX(0);
+      if (delta) move(delta);
+    }
+    if (e.currentTarget.hasPointerCapture?.(e.pointerId)) e.currentTarget.releasePointerCapture(e.pointerId);
+  };
 
   return (
     <section ref={section} className={cn("coverflow relative isolate w-full overflow-hidden", className)}
@@ -111,32 +135,47 @@ export function CoverFlowCarousel({
       onFocusCapture={() => setFocused(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocused(false); }}
       onKeyDown={e => {
         if ((e.target as HTMLElement).matches("input,select,textarea") || e.altKey || e.ctrlKey || e.metaKey) return;
+        if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) setInstant(true);
         if (e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
         if (e.key === "ArrowRight") { e.preventDefault(); move(1); }
         if (e.key === "Home") { e.preventDefault(); goToSlide(0); }
         if (e.key === "End") { e.preventDefault(); goToSlide(total - 1); }
+      }} onClickCapture={e => {
+        if (performance.now() < suppressClickUntil.current) { e.preventDefault(); e.stopPropagation(); }
+        else setInstant(e.detail === 0);
       }}>
       <div className="coverflow-inner relative z-10 mx-auto flex w-full flex-col items-center">
         <div className="coverflow-heading"><div><h2 id={labelId}>{sectionLabel}</h2><p>Six signature flavours, made for your next visit.</p></div><a className="btn outline" href="flavours.html">View full menu<ArrowRight size={18} aria-hidden="true" /></a></div>
-        <div ref={stage} className="coverflow-stage relative flex w-full items-center justify-center"
+        <div ref={stage} className={cn("coverflow-stage relative flex w-full items-center justify-center", dragging && "is-dragging")}
           style={{ perspective: "1400px", touchAction: "pan-y" }}
-          onTouchStart={e => { if (e.touches.length === 1) touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }}
-          onTouchCancel={() => { touchStart.current = null; }}
-          onTouchEnd={e => { const start = touchStart.current; touchStart.current = null; if (!start || !e.changedTouches[0]) return;
-            const dx = e.changedTouches[0].clientX - start.x, dy = e.changedTouches[0].clientY - start.y;
-            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.25) move(dx < 0 ? 1 : -1); }}>
+          onPointerDown={e => {
+            if (!e.isPrimary || e.button !== 0 || total <= 1 || (e.target as HTMLElement).closest("a")) return;
+            gesture.current = { id:e.pointerId, x:e.clientX, y:e.clientY, lastX:e.clientX, time:performance.now(), velocity:0, active:false };
+          }}
+          onPointerMove={e => {
+            const current = gesture.current; if (!current || current.id !== e.pointerId) return;
+            const dx=e.clientX-current.x, dy=e.clientY-current.y;
+            if (!current.active) {
+              if (Math.abs(dy) > 8 && Math.abs(dy) > Math.abs(dx)) { gesture.current=null; return; }
+              if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)*1.25) return;
+              current.active=true; setDragging(true); setPaused(true); setInstant(false); e.currentTarget.setPointerCapture?.(e.pointerId);
+            }
+            e.preventDefault();
+            const now=performance.now(); current.velocity=(e.clientX-current.lastX)/Math.max(1,now-current.time);
+            current.lastX=e.clientX; current.time=now;
+            if (!reduceMotion) setDragX(Math.max(-step,Math.min(step,dx)));
+          }}
+          onPointerUp={e => finishDrag(e)} onPointerCancel={e => finishDrag(e,true)}
+          onLostPointerCapture={e => { if (gesture.current) finishDrag(e,true); }}
+          onDragStart={e => e.preventDefault()}>
           {items.map((item, idx) => {
-            const rawOffset = (idx - index + total) % total;
-            const offset = rawOffset > total / 2 ? rawOffset - total : rawOffset;
-            const distance = Math.abs(offset), center = distance === 0, shown = distance <= 2;
-            const scale = distance === 0 ? 1 : distance === 1 ? .84 : .68;
-            const x = offset * (distance > 1 ? step * .89 : step);
-            const turn = offset === 0 ? 0 : offset > 0 ? -(distance === 1 ? 12 : 20) : distance === 1 ? 12 : 20;
+            const {x,scale,turn,opacity,distance}=coverflowPose(idx,index,total,dragX/step,step);
+            const center = idx === index, shown = distance < 3;
             return (
-              <article key={`${item.titleLine1}-${idx}`} className="coverflow-card" role="group" aria-roledescription="slide"
+              <motion.article key={`${item.titleLine1}-${idx}`} className="coverflow-card" role="group" aria-roledescription="slide"
                 aria-label={`${idx + 1} of ${total}: ${item.titleLine1}`} aria-hidden={!center}
-                style={{ width: cardWidth, transform: `translateX(${x}px) scale(${scale}) rotateY(${reduceMotion ? 0 : turn}deg)`, opacity: shown ? center ? 1 : distance === 1 ? 1 : .92 : 0,
-                  zIndex: 30 - distance * 10, transition, pointerEvents: shown ? "auto" : "none" }}>
+                initial={false} animate={{ transform: `translateX(${x}px) scale(${scale}) rotateY(${reduceMotion ? 0 : turn}deg)`, opacity }} transition={transition}
+                style={{ width: cardWidth, zIndex: 30 - distance * 10, pointerEvents: shown ? "auto" : "none" }}>
                 {item.imagePosition ? <div className="coverflow-photo atlas-photo" role="img" aria-label={item.imgAlt || item.titleLine1}
                   style={{ backgroundImage: `url(${item.img})`, backgroundPosition: item.imagePosition }} /> :
                   <img className="coverflow-photo" src={item.img} alt={item.imgAlt || item.titleLine1} loading="lazy" decoding="async" />}
@@ -151,7 +190,7 @@ export function CoverFlowCarousel({
                     </a>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </div>
