@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T07:54:38.329Z",
+  "generatedAt": "2026-10-10T08:29:19Z",
   "title": "Design System: Mr Gelato",
   "extensions": {
     "colorMeta": {
@@ -233,19 +233,44 @@
         "purpose": "Control state transitions."
       },
       {
-        "name": "coverflow-transform",
-        "value": "650ms cubic-bezier(.25,1,.5,1)",
-        "purpose": "Manual/automatic card movement, disabled for reduced motion."
+        "name": "coverflow-settle",
+        "value": "type:spring; duration:0.5; bounce:0.2",
+        "purpose": "Settle after direct pointer drag or pointer/automatic selection; keyboard and reduced-motion selection are instantaneous."
       },
       {
         "name": "coverflow-opacity",
-        "value": "450ms ease-out",
+        "value": "200ms",
         "purpose": "Card visibility."
       },
       {
         "name": "hero-spring",
         "value": "stiffness:100; damping:10",
         "purpose": "Optional fine-pointer photo response."
+      },
+      {
+        "name": "hero-photo-arrival",
+        "value": "700ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Photo uncrop and opacity arrival; skipped for reduced motion/global pause."
+      },
+      {
+        "name": "hero-copy-arrival",
+        "value": "500ms; stagger:50ms; translateY:12px; cubic-bezier(.23,1,.32,1)",
+        "purpose": "Headline, supporting copy and actions settle alongside the photograph."
+      },
+      {
+        "name": "story-photo-reveal",
+        "value": "600ms cubic-bezier(.77,0,.175,1)",
+        "purpose": "One-time photo reveal at 20% intersection; supporting sections stay still."
+      },
+      {
+        "name": "menu-filter-flip",
+        "value": "250ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Pointer filter changes reuse card nodes and animate position; search and keyboard filtering are immediate."
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "open:200ms; close:150ms; cubic-bezier(.23,1,.32,1)",
+        "purpose": "Pointer disclosure only; hidden links are inert and Escape immediately closes and restores toggle focus."
       }
     ],
     "breakpoints": [
