@@ -26,10 +26,10 @@ export interface CoverFlowCarouselProps {
 
 export const defaultDishes: CarouselItem[] = [
   { tag: "Fruit favourite", titleLine1: "Mango", titleLine2: "A little sunshine", desc: "Find your flavour of happy in the fruit collection.", img: "assets/plates/mango.png", ctaText: "Build with Mango", ctaUrl: "#builder", imgAlt: "Illustrative mango gelato" },
-  { tag: "Chocolate collection", titleLine1: "Chocolate", titleLine2: "Follow your sweet tooth", desc: "A familiar favourite for your next gelato moment.", img: "assets/carousel-chocolate-stock.jpg", ctaText: "Build with Chocolate", ctaUrl: "#builder", imgAlt: "Illustrative stock chocolate sundae photograph" },
+  { tag: "Chocolate collection", titleLine1: "Chocolate", titleLine2: "Follow your sweet tooth", desc: "A familiar favourite for your next gelato moment.", img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&q=85&fit=crop&auto=format", ctaText: "Build with Chocolate", ctaUrl: "#builder", imgAlt: "Illustrative stock chocolate sundae photograph" },
   { tag: "Berry favourite", titleLine1: "Strawberry", titleLine2: "Meet your berry crush", desc: "A scoop for the days that call for a little colour.", img: "assets/hero-realistic.png", ctaText: "Build with Strawberry", ctaUrl: "#builder", imgAlt: "Illustrative gelato cone topped with a pink strawberry scoop" },
   { tag: "Indian fruit favourite", titleLine1: "Custard Apple", titleLine2: "A familiar kind of happy", desc: "Sitaphal. Sarifa. Explore a flavour close to home.", img: "assets/plates/custard.png", ctaText: "Build with Custard Apple", ctaUrl: "#builder", imgAlt: "Illustrative custard apple gelato" },
-  { tag: "Made your way", titleLine1: "Your custom pint", titleLine2: "Three layers. Your rules.", desc: "Choose from the full collection and make your own mix.", img: "assets/carousel-strawberry.jpg", ctaText: "Build your pint", ctaUrl: "#builder", imgAlt: "Illustrative stock vanilla ice cream in a sprinkle-covered waffle bowl" },
+  { tag: "Made your way", titleLine1: "Your custom pint", titleLine2: "Three layers. Your rules.", desc: "Choose from the full collection and make your own mix.", img: "https://images.unsplash.com/photo-1560008581-09826d1de69e?w=900&q=85&fit=crop&auto=format", ctaText: "Build your pint", ctaUrl: "#builder", imgAlt: "Illustrative stock vanilla ice cream in a sprinkle-covered waffle bowl" },
 ];
 
 /** Adapted from the supplied coverflow: same public API, with scoped keyboard
