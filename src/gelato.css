@@ -1,6 +1,9 @@
 @import "tailwindcss";
+@import "./coverflow.css";
 @source "../public/*.html";
 @source "./gelato.js";
+@source "../components/**/*.tsx";
+@source "./menu.tsx";
 @font-face{font-family:Jakarta;src:url('assets/fonts/jakarta.ttf') format('truetype');font-weight:200 800;font-display:swap}
 @font-face{font-family:Inter;src:url('assets/fonts/inter.ttf') format('truetype');font-weight:100 900;font-display:swap}
 @theme{--font-sans:Inter,Arial,sans-serif;--font-display:Jakarta,Arial,sans-serif;--color-cream:#fff9ef;--color-cocoa:#38251f;--color-pistachio:#d8e8b5;--color-strawberry:#f2b7c9;--color-midnight:#182b29}

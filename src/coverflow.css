@@ -1,0 +1,35 @@
+/* Menu coverflow: scoped styling, sharing Mr Gelato's cream/midnight palette. */
+.coverflow{background:#182b29;color:#fff9ef;padding:55px 0 30px;margin-top:45px;isolation:isolate}
+.coverflow-ambient{opacity:.38;z-index:-1;overflow:hidden}
+.coverflow-ambient img{width:100%;height:100%;object-fit:cover;filter:blur(36px) brightness(.3);transform:scale(1.12)}
+.coverflow-ambient:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,#182b2955,#182b29 85%)}
+.coverflow-inner{max-width:1280px;padding-inline:20px}
+.coverflow-heading{text-align:center;max-width:630px;margin-bottom:18px}
+.coverflow-heading>p{font-size:13px;color:#d8e8b5;margin-bottom:12px}
+.coverflow-heading h2{font:800 clamp(30px,4vw,48px)/1.1 Jakarta,Arial,sans-serif;letter-spacing:-.04em;margin:0}
+.coverflow-heading>span{display:block;font-size:13px;color:#bdcdbf;margin-top:17px;line-height:1.6}
+.coverflow-stage{height:515px;margin:10px 0 20px}
+.coverflow-card{position:absolute;height:470px;border-radius:20px;overflow:hidden;background:#3d332b;border:1px solid #fff9ef33;transform-origin:center;box-shadow:0 24px 50px #0005;backface-visibility:hidden}
+.coverflow-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.coverflow-vignette{position:absolute;inset:0;background:linear-gradient(180deg,#182b291c,#182b2900 25%,#0c191ac9 60%,#081717 100%);pointer-events:none}
+.coverflow-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;text-align:center}
+.coverflow-tag{align-self:flex-end;background:#182b29bf;color:#fff9ef;padding:7px 10px;border-radius:40px;font-size:11px;line-height:1.2;backdrop-filter:blur(8px)}
+.coverflow-body{display:flex;flex-direction:column;align-items:center;gap:12px}
+.coverflow-body h3{font:800 34px/1.1 Jakarta,Arial,sans-serif;letter-spacing:-.035em;margin:0;color:#fff9ef}
+.coverflow-subtitle{font-size:15px;font-weight:600;color:#d8e8b5;margin:0;line-height:1.4}
+.coverflow-description{font-size:13px;line-height:1.5;color:#e4e8df;max-width:29ch;margin:0 0 7px}
+.coverflow-cta{display:inline-flex;gap:10px;align-items:center;justify-content:center;min-height:44px;padding:11px 18px;border-radius:30px;background:#d8e8b5;color:#182b29;font-size:12px;font-weight:750;text-decoration:none;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms ease-out}
+.coverflow-select{position:absolute;inset:0;width:100%;height:100%;z-index:4;background:transparent;border:0;cursor:pointer}
+.coverflow-controls{gap:15px;flex-wrap:wrap}
+.coverflow-arrow{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border:1px solid #fff9ef55;border-radius:50%;background:#fff9ef0d;color:#fff9ef;cursor:pointer;transition:transform 160ms ease-out,background-color 160ms ease-out}
+.coverflow-arrow:disabled{opacity:.4;cursor:default}
+.coverflow-dots{gap:3px}.coverflow-dot{display:grid;place-items:center;width:28px;height:44px;background:transparent;border:0;cursor:pointer}
+.coverflow-dot span{height:8px;width:8px;background:#fff9ef66;border-radius:100%;transition:transform 160ms ease-out,background-color 160ms ease-out}
+.coverflow-dot[aria-current=true] span{background:#d8e8b5;transform:scale(1.5)}
+.coverflow-pause{margin-left:5px}.coverflow-credit{font-size:11px;line-height:1.6;color:#bdcdbf;text-align:center;margin:20px 0 0}
+.coverflow a:focus-visible,.coverflow button:focus-visible{outline:3px solid #f2b7c9;outline-offset:4px}
+.coverflow button,.coverflow-cta{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none}
+.coverflow-cta:active,.coverflow-arrow:active{transform:scale(.96)}
+@media(hover:hover) and (pointer:fine){.coverflow-cta:hover{background:#f2b7c9}.coverflow-arrow:not(:disabled):hover{background:#fff9ef22}}
+@media(max-width:600px){.coverflow{padding-top:36px;margin-top:30px}.coverflow-inner{padding-inline:12px}.coverflow-heading{padding-inline:10px}.coverflow-heading>span{font-size:12px;max-width:30ch;margin:14px auto 0}.coverflow-stage{height:445px;margin-top:5px}.coverflow-card{height:405px;border-radius:16px}.coverflow-content{padding:18px 20px}.coverflow-body{gap:9px}.coverflow-body h3{font-size:30px}.coverflow-subtitle{font-size:13px}.coverflow-description{font-size:12px;max-width:26ch}.coverflow-controls{gap:7px}.coverflow-arrow{width:44px;height:44px}.coverflow-dot{width:24px}.coverflow-credit{font-size:10px;padding-inline:15px}.coverflow-pause{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.coverflow *, .coverflow *:before, .coverflow *:after{transition:none!important}}
