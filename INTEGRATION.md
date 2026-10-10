@@ -1,13 +1,14 @@
 # React islands integration
 
-The static site uses React, TypeScript, Motion and Tailwind CSS v4 with a shadcn-compatible source layout. `src/menu.tsx` mounts the hero image into `#berry-hero-image` when present, and mounts coverflow into homepage `#flavours` only when `body[data-page="index.html"]` matches. The menu page keeps its static 24-flavour filters/search and pint controls. No context provider or additional state-management library is needed.
+The static site uses React, TypeScript, Motion and Tailwind CSS v4 with a shadcn-compatible layout. src/menu.tsx mounts the hero into #berry-hero-image when present and coverflow into homepage #flavours only when body[data-page="index.html"] matches. Menu filters/search and the pint builder remain static-script controls. No context provider or additional state-management library is needed.
 
-- Hero: `components/ui/berry-hero-image.tsx`; asset `public/assets/hero-berry.png`.
-- Carousel: `components/ui/3-d-coverflow-carousel.tsx`; demo `components/demo.tsx`.
-- React entry and homepage pint handoff: `src/menu.tsx`.
-- Shared Tailwind entry: `src/gelato.css`; scoped styles: `src/coverflow.css` and `src/berry-redesign.css`.
-- Utility: `lib/utils.ts`; strict checking and `@/*` root aliases: `tsconfig.json`.
-- shadcn configuration: `components.json`, with `@/components/ui` resolving to `components/ui`.
+- Hero: components/ui/berry-hero-image.tsx; asset public/assets/hero-berry.png.
+- Carousel: components/ui/3-d-coverflow-carousel.tsx; demo components/demo.tsx.
+- Shared signatures: src/signature-flavours.ts, consumed by carousel and src/gelato.js.
+- React entry: src/menu.tsx; static interactions/menu data: src/gelato.js.
+- Tailwind entry: src/gelato.css; imports coverflow.css, then berry-redesign.css, then ivory-redesign.css. The last import owns current ivory overrides.
+- Utility: lib/utils.ts; strict checking and @/* root aliases: tsconfig.json.
+- shadcn configuration: components.json; @/components/ui resolves to components/ui.
 
 ## Run and rebuild
 
@@ -18,16 +19,33 @@ npm.cmd run build
 npm.cmd run preview
 ```
 
-Preview is http://localhost:4188 and serves `public/`. Build runs typecheck, bundles islands through esbuild into `public/menu.js`, bundles static scripts, and compiles Tailwind to `public/gelato.css`. Publish `public/` contents for static hosting. This project is already configured; no shadcn initialization is needed to run it.
+Preview serves public/ at http://localhost:4188. Build runs typecheck, bundles islands through build.cjs into public/menu.js, bundles static scripts, and compiles Tailwind to public/gelato.css. Publish public/ contents. No shadcn initialization is needed.
 
-## Data and behavior
+## Data and imagery
 
-The homepage highlights five flavour/pint stories, using illustrative generated imagery and stock photography. Stock origins are recorded in `public/assets`; stock URLs can require network access and fall back to a local illustrative cone. These are not verified catalogue photographs or bestseller evidence.
+Homepage highlights six client-selected signatures, initially centering Strawberry Cheese Cake (initialIndex=2). Up to five cards are visible on desktop. Menu combines six signatures with the retained 24 flavours (30 sample entries). Shared names, copy, scoop colours and atlas positions live in src/signature-flavours.ts; photography and descriptions remain illustrative.
 
-Carousel props are `items`, `sectionLabel`, `autoplay`, `autoplayDelay`, `className` and `onCtaClick`. `CarouselItem` includes `imgAlt` for descriptive alternative text. Autoplay defaults to true with a 5000ms delay (minimum 3000ms). The homepage callback matches `titleLine1` against the first native layer selector, dispatches its change event, scrolls to `#builder` and focuses the selector. The custom-pint item guides users to choose layers without inventing a matching flavour.
+public/assets/signature-atlas.png is a generated 3×2 atlas rendered at background-size:300% 200% in signature menu and carousel photographs:
 
-Autoplay pauses on pointer hover, keyboard focus, offscreen, hidden tabs, global Pause motion or OS reduced motion. Manual navigation pauses until resumed. Arrow keys are scoped to the carousel; inactive cards are excluded from keyboard navigation. Swipe distinguishes horizontal intent from vertical scrolling. Empty, single, two-item and changing item arrays are handled in the component.
+| Name | Background position |
+| --- | --- |
+| Yoghurt Wild Berry | 0% 0% |
+| Jamun Sorbe | 50% 0% |
+| Strawberry Cheese Cake | 100% 0% |
+| Madagascar Fine Chocolate | 0% 100% |
+| Lemon Cello Ice | 50% 100% |
+| Blue Sky | 100% 100% |
 
-The hero has static HTML imagery before JavaScript mounts. Motion applies a gentle fine-pointer spring (stiffness 100, damping 10); touch, reduced motion, hidden tabs and global pause suppress optional pointer response. The hero does not load the retained procedural Three.js implementation.
+public/assets/menu-atlas.png is a generated 2×2 café-category atlas rendered at background-size:200% 200%: coffee & beverages at 0% 0%, shakes at 100% 0%, desserts at 0% 100%, pizza & savoury food at 100% 100%. Category links point to matching menu anchors. public/assets/gelato-craft.png shows illustrative scooping; public/assets/cafe-preview.png is a fictional interior. Replace placeholders with approved photography before representing them as the real café or catalogue.
 
-The sample has no API keys, checkout, newsletter storage or backend. Pint controls and downloads are demonstrations. Physical-phone gesture quality and whole-site visual approval must not be inferred from these integration notes.
+## Carousel and hero behavior
+
+Carousel props are items, sectionLabel, initialIndex, autoplay, autoplayDelay, className and onCtaClick. CarouselItem includes optional imgAlt and imagePosition; atlas items use a labelled background-image region, while other items use an image element. Autoplay defaults to true with 5000ms delay (minimum 3000ms). Default card actions link to flavours.html?flavour=<encoded name>#flavours; menu initializes search from that query. There is no homepage pint handoff. A supplied onCtaClick overrides the default link behavior.
+
+Autoplay pauses on mouse hover, keyboard focus, offscreen, hidden tabs, global Pause motion or OS reduced motion. Manual navigation pauses until resumed. Arrow keys, Home and End are scoped to the carousel; inactive card actions are excluded from keyboard navigation. Swipe distinguishes horizontal intent from vertical scrolling. Empty, single, two-item and changing item arrays are handled. Reduced motion suppresses rotation and transitions.
+
+Hero static HTML imagery renders before JavaScript mounts. Motion applies a fine-pointer spring (stiffness 100, damping 10); touch, reduced motion, hidden tabs and global pause suppress optional response. The hero does not load the retained procedural Three.js implementation.
+
+## Sample boundaries
+
+The pint builder is only on flavours.html; menu Add actions select its first layer and focus the selector. Pint controls/downloads are demonstrations. Contact opens the user's email app; newsletter data is not stored. There are no API keys, checkout, live orders or backend. Address, hours, social links, dietary/health facts and final identity require confirmation. These notes do not establish whole-site visual approval, exact fidelity or physical-phone gesture quality.
