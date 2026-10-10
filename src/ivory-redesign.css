@@ -31,3 +31,9 @@ body{background:var(--cream);color:var(--cocoa)}
 .brand small,.brand-tagline,.motion-toggle,.footer .tiny{font-size:12px}
 .coverflow{padding:48px 0 40px}
 @media(max-width:760px){.berry-hero{height:auto}.berry-hero .hero-copy{width:100%}.berry-hero h1{font-size:clamp(44px,9.7vw,72px)}.berry-hero .hero-copy>p{font-size:17px;max-width:31ch}.coverflow{padding-top:42px}}
+html{scrollbar-color:#aa536a var(--cream)}
+::-webkit-scrollbar-thumb{background:#aa536a}
+:focus-visible{outline-color:var(--berry)}
+.choice-row input:checked+span,.topping-choices input:checked+span{border-color:var(--berry);background:#f5e6e9}
+.choice-row input:focus-visible+span,.topping-choices input:focus-visible+span{outline-color:var(--berry)}
+.pint-cup small,.choice-row small,.mix-summary>span,.mix-summary small,.control-hint{font-size:12px}
