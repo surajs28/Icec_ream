@@ -176,6 +176,8 @@ Primary actions are wine-berry pills with a 55px minimum height; outline actions
 
 Filters use aria-pressed and chocolate/ivory selection. Pint choices preserve native checked semantics, pale berry selected fills and berry focus. Selection must remain understandable beyond colour.
 
+Menu cards retain their DOM nodes across filtering. Pointer filter changes use a short positional FLIP transition (250ms); new results enter with an 8px rise. Search and keyboard filtering update immediately. Reading layouts otherwise remain still; fine-pointer hover scales the photograph to 1.035 and moves action arrows 3px.
+
 ### Cards / Containers
 
 Flavour copy sits outside rounded menu photography. Café categories use open compositions with square photographs, titles and berry links. Coverflow cards use a 315px photo and a 90px ivory caption band, a warm outline and soft shadow; below 600px the photo is 290px. Only the active card exposes its action to keyboard navigation.
@@ -188,11 +190,13 @@ Contact fields retain ivory fills, warm borders and recorded geometry. Search/ne
 
 Homepage cream links sit over berry photography with an ivory menu pill. Inner pages use ivory, chocolate links and a berry menu pill. At 800px a disclosed vertical menu communicates expanded state. The temporary text identity is not a confirmed logo replacement.
 
+Pointer disclosure opens in 200ms and closes in 150ms with a small vertical shift and opacity change. Hidden mobile navigation is inert; Escape closes it immediately and restores focus to the toggle. Keyboard disclosure and reduced-motion/global-pause changes are immediate.
+
 ### Photographic hero and coverflow
 
-public/assets/hero-berry.png is illustrative gelato with a metal scoop. Static HTML photography renders before the React island. Its fine-pointer spring uses stiffness 100 and damping 10, at most ±4px horizontal and ±3px vertical at scale 1.025. Touch, reduced motion, hidden tabs and global pause suppress optional response. This hero has no WebGL dependency.
+public/assets/hero-berry.png is illustrative gelato with a metal scoop. Static HTML photography renders before the React island. The photograph uncrops on arrival (700ms); headline, supporting copy and actions settle over 500ms with 50ms stagger and a 12px rise. The story photograph reveals once on intersection (600ms); supporting sections stay still. Reduced motion and global pause skip these arrivals, and changing those preferences cancels running animations. The hero's fine-pointer spring uses stiffness 100 and damping 10, at most ±4px horizontal and ±3px vertical at scale 1.025. Touch, reduced motion, hidden tabs and global pause suppress optional pointer response. This hero has no WebGL dependency.
 
-The carousel sources six items from src/signature-flavours.ts and the generated 3×2 signature atlas. Arrows, dots, scoped keyboard navigation and horizontal-intent swipe drive selection. Autoplay defaults to 5000ms and pauses on hover, focus, offscreen, hidden tabs, global pause or reduced motion; manual navigation pauses until resumed. Card actions link to matching menu search. Movement uses 650ms transform and 450ms opacity transitions, disabled for reduced motion. The pint remains a demonstration, with no checkout.
+The carousel sources six items from src/signature-flavours.ts and the generated 3×2 signature atlas. Arrows, dots, scoped keyboard navigation and horizontal-intent pointer drag drive selection. Cards follow the pointer directly on shared fractional-slide geometry; release projects velocity over 120ms before choosing one adjacent slide. Settling uses a duration-based spring (0.5s, bounce 0.2) and 200ms opacity change. Keyboard navigation and reduced-motion selection are instantaneous; reduced motion also suppresses live drag displacement and rotation. Vertical touch scrolling remains available, cancelled gestures settle without selecting, and drag release suppresses accidental clicks. Autoplay defaults to 5000ms and pauses during drag, hover, focus, offscreen, hidden tabs, global pause or reduced motion; manual navigation pauses until resumed. Card actions link to matching menu search. The pint remains a demonstration, with no checkout.
 
 ## Do's and Don'ts
 
