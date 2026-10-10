@@ -1,58 +1,54 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T07:08:31.687Z",
+  "generatedAt": "2026-10-10T07:54:38.329Z",
   "title": "Design System: Mr Gelato",
   "extensions": {
     "colorMeta": {
       "berry": {
         "role": "primary",
-        "displayName": "Berry",
-        "canonical": "#a50e36",
+        "displayName": "berry",
         "tonalRamp": [
-          "oklch(15% 0.1783 15.61)",
-          "oklch(26% 0.1783 15.61)",
-          "oklch(38% 0.1783 15.61)",
-          "oklch(49% 0.1783 15.61)",
-          "oklch(61% 0.1783 15.61)",
-          "oklch(72% 0.1783 15.61)",
-          "oklch(84% 0.1783 15.61)",
-          "oklch(95% 0.1783 15.61)"
+          "oklch(15% 0.1554 11.99)",
+          "oklch(26% 0.1554 11.99)",
+          "oklch(38% 0.1554 11.99)",
+          "oklch(49% 0.1554 11.99)",
+          "oklch(61% 0.1554 11.99)",
+          "oklch(72% 0.1554 11.99)",
+          "oklch(84% 0.1554 11.99)",
+          "oklch(95% 0.1554 11.99)"
         ]
       },
       "berry-dark": {
         "role": "primary",
-        "displayName": "Deep Berry",
-        "canonical": "#7f0d2c",
+        "displayName": "berry dark",
         "tonalRamp": [
-          "oklch(15% 0.1449 13.75)",
-          "oklch(26% 0.1449 13.75)",
-          "oklch(38% 0.1449 13.75)",
-          "oklch(49% 0.1449 13.75)",
-          "oklch(61% 0.1449 13.75)",
-          "oklch(72% 0.1449 13.75)",
-          "oklch(84% 0.1449 13.75)",
-          "oklch(95% 0.1449 13.75)"
+          "oklch(15% 0.1277 11.60)",
+          "oklch(26% 0.1277 11.60)",
+          "oklch(38% 0.1277 11.60)",
+          "oklch(49% 0.1277 11.60)",
+          "oklch(61% 0.1277 11.60)",
+          "oklch(72% 0.1277 11.60)",
+          "oklch(84% 0.1277 11.60)",
+          "oklch(95% 0.1277 11.60)"
         ]
       },
       "berry-light": {
         "role": "primary",
-        "displayName": "Light Berry",
-        "canonical": "#f7dce2",
+        "displayName": "berry light",
         "tonalRamp": [
-          "oklch(15% 0.0308 2.61)",
-          "oklch(26% 0.0308 2.61)",
-          "oklch(38% 0.0308 2.61)",
-          "oklch(49% 0.0308 2.61)",
-          "oklch(61% 0.0308 2.61)",
-          "oklch(72% 0.0308 2.61)",
-          "oklch(84% 0.0308 2.61)",
-          "oklch(95% 0.0308 2.61)"
+          "oklch(15% 0.0259 5.69)",
+          "oklch(26% 0.0259 5.69)",
+          "oklch(38% 0.0259 5.69)",
+          "oklch(49% 0.0259 5.69)",
+          "oklch(61% 0.0259 5.69)",
+          "oklch(72% 0.0259 5.69)",
+          "oklch(84% 0.0259 5.69)",
+          "oklch(95% 0.0259 5.69)"
         ]
       },
       "cream": {
         "role": "neutral",
-        "displayName": "Cream",
-        "canonical": "#fff9ef",
+        "displayName": "cream",
         "tonalRamp": [
           "oklch(15% 0.0147 80.71)",
           "oklch(26% 0.0147 80.71)",
@@ -66,8 +62,7 @@
       },
       "cocoa": {
         "role": "neutral",
-        "displayName": "Cocoa",
-        "canonical": "#38251f",
+        "displayName": "cocoa",
         "tonalRamp": [
           "oklch(15% 0.0311 38.26)",
           "oklch(26% 0.0311 38.26)",
@@ -79,55 +74,9 @@
           "oklch(95% 0.0311 38.26)"
         ]
       },
-      "pistachio": {
-        "role": "secondary",
-        "displayName": "Pistachio",
-        "canonical": "#d8e8b5",
-        "tonalRamp": [
-          "oklch(15% 0.0693 121.93)",
-          "oklch(26% 0.0693 121.93)",
-          "oklch(38% 0.0693 121.93)",
-          "oklch(49% 0.0693 121.93)",
-          "oklch(61% 0.0693 121.93)",
-          "oklch(72% 0.0693 121.93)",
-          "oklch(84% 0.0693 121.93)",
-          "oklch(95% 0.0693 121.93)"
-        ]
-      },
-      "strawberry": {
-        "role": "secondary",
-        "displayName": "Strawberry",
-        "canonical": "#f2b7c9",
-        "tonalRamp": [
-          "oklch(15% 0.0718 358.70)",
-          "oklch(26% 0.0718 358.70)",
-          "oklch(38% 0.0718 358.70)",
-          "oklch(49% 0.0718 358.70)",
-          "oklch(61% 0.0718 358.70)",
-          "oklch(72% 0.0718 358.70)",
-          "oklch(84% 0.0718 358.70)",
-          "oklch(95% 0.0718 358.70)"
-        ]
-      },
-      "midnight": {
-        "role": "tertiary",
-        "displayName": "Midnight",
-        "canonical": "#182b29",
-        "tonalRamp": [
-          "oklch(15% 0.0252 187.39)",
-          "oklch(26% 0.0252 187.39)",
-          "oklch(38% 0.0252 187.39)",
-          "oklch(49% 0.0252 187.39)",
-          "oklch(61% 0.0252 187.39)",
-          "oklch(72% 0.0252 187.39)",
-          "oklch(84% 0.0252 187.39)",
-          "oklch(95% 0.0252 187.39)"
-        ]
-      },
       "muted": {
         "role": "neutral",
-        "displayName": "Muted Cocoa",
-        "canonical": "#6c584d",
+        "displayName": "muted",
         "tonalRamp": [
           "oklch(15% 0.0316 50.41)",
           "oklch(26% 0.0316 50.41)",
@@ -141,8 +90,7 @@
       },
       "line": {
         "role": "neutral",
-        "displayName": "Warm Line",
-        "canonical": "#d9cfc0",
+        "displayName": "line",
         "tonalRamp": [
           "oklch(15% 0.0232 78.20)",
           "oklch(26% 0.0232 78.20)",
@@ -155,24 +103,22 @@
         ]
       },
       "focus": {
-        "role": "neutral",
-        "displayName": "Leaf Focus",
-        "canonical": "#406548",
+        "role": "primary",
+        "displayName": "focus",
         "tonalRamp": [
-          "oklch(15% 0.0632 150.23)",
-          "oklch(26% 0.0632 150.23)",
-          "oklch(38% 0.0632 150.23)",
-          "oklch(49% 0.0632 150.23)",
-          "oklch(61% 0.0632 150.23)",
-          "oklch(72% 0.0632 150.23)",
-          "oklch(84% 0.0632 150.23)",
-          "oklch(95% 0.0632 150.23)"
+          "oklch(15% 0.1554 11.99)",
+          "oklch(26% 0.1554 11.99)",
+          "oklch(38% 0.1554 11.99)",
+          "oklch(49% 0.1554 11.99)",
+          "oklch(61% 0.1554 11.99)",
+          "oklch(72% 0.1554 11.99)",
+          "oklch(84% 0.1554 11.99)",
+          "oklch(95% 0.1554 11.99)"
         ]
       },
       "field-line": {
         "role": "neutral",
-        "displayName": "Field Line",
-        "canonical": "#b7aa98",
+        "displayName": "field line",
         "tonalRamp": [
           "oklch(15% 0.0293 76.13)",
           "oklch(26% 0.0293 76.13)",
@@ -186,8 +132,7 @@
       },
       "filter-surface": {
         "role": "neutral",
-        "displayName": "Filter Surface",
-        "canonical": "#f0e9dd",
+        "displayName": "filter surface",
         "tonalRamp": [
           "oklch(15% 0.0177 81.33)",
           "oklch(26% 0.0177 81.33)",
@@ -201,8 +146,7 @@
       },
       "outline-hover": {
         "role": "neutral",
-        "displayName": "Outline Hover",
-        "canonical": "#eee8dc",
+        "displayName": "outline hover",
         "tonalRamp": [
           "oklch(15% 0.0173 84.59)",
           "oklch(26% 0.0173 84.59)",
@@ -214,42 +158,67 @@
           "oklch(95% 0.0173 84.59)"
         ]
       },
-      "nav-glass": {
+      "card-line": {
         "role": "neutral",
-        "displayName": "Navigation Glass",
-        "canonical": "rgba(255,249,239,.85)",
+        "displayName": "card line",
         "tonalRamp": [
-          "oklch(15% 0.0147 80.71)",
-          "oklch(26% 0.0147 80.71)",
-          "oklch(38% 0.0147 80.71)",
-          "oklch(49% 0.0147 80.71)",
-          "oklch(61% 0.0147 80.71)",
-          "oklch(72% 0.0147 80.71)",
-          "oklch(84% 0.0147 80.71)",
-          "oklch(95% 0.0147 80.71)"
+          "oklch(15% 0.0381 69.88)",
+          "oklch(26% 0.0381 69.88)",
+          "oklch(38% 0.0381 69.88)",
+          "oklch(49% 0.0381 69.88)",
+          "oklch(61% 0.0381 69.88)",
+          "oklch(72% 0.0381 69.88)",
+          "oklch(84% 0.0381 69.88)",
+          "oklch(95% 0.0381 69.88)"
+        ]
+      },
+      "choice-selected": {
+        "role": "primary",
+        "displayName": "choice selected",
+        "tonalRamp": [
+          "oklch(15% 0.0168 3.66)",
+          "oklch(26% 0.0168 3.66)",
+          "oklch(38% 0.0168 3.66)",
+          "oklch(49% 0.0168 3.66)",
+          "oklch(61% 0.0168 3.66)",
+          "oklch(72% 0.0168 3.66)",
+          "oklch(84% 0.0168 3.66)",
+          "oklch(95% 0.0168 3.66)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
-        "displayName": "Berry hero display",
-        "purpose": "Homepage hero; responsive variants are documented in DESIGN.md."
+        "displayName": "Hero display",
+        "purpose": "Photographic hero headline."
+      },
+      "headline": {
+        "displayName": "Section headline",
+        "purpose": "Reading-section headings."
+      },
+      "title": {
+        "displayName": "Menu title",
+        "purpose": "Flavour names; carousel titles use their own 18px/700 context."
       },
       "body": {
-        "displayName": "Reading text",
-        "purpose": "Inter reading and control text."
+        "displayName": "Body",
+        "purpose": "Reading text."
+      },
+      "label": {
+        "displayName": "Control label",
+        "purpose": "Pill actions and controls."
       }
     },
     "shadows": [
       {
-        "name": "coverflow-card",
-        "value": "0 24px 50px #0005",
-        "purpose": "Photographic coverflow depth."
+        "name": "coverflow",
+        "value": "0 12px 26px #38251f1a",
+        "purpose": "Diffuse signature-card depth."
       },
       {
-        "name": "builder-ambient",
+        "name": "builder",
         "value": "0 20px 70px rgba(64,43,30,.08)",
-        "purpose": "Pint container separation."
+        "purpose": "Concept pint container."
       },
       {
         "name": "mobile-navigation",
@@ -259,19 +228,24 @@
     ],
     "motion": [
       {
-        "name": "hero-pointer-spring",
-        "value": "stiffness: 100; damping: 10; x: ±4px; y: ±3px; scale: 1.025",
-        "purpose": "Fine-pointer photographic depth, gated by reduced motion and pause."
-      },
-      {
         "name": "ease-out",
         "value": "cubic-bezier(.23,1,.32,1)",
-        "purpose": "Shared restrained control transforms."
+        "purpose": "Control state transitions."
       },
       {
-        "name": "coverflow-autoplay",
-        "value": "5000ms; minimum 3000ms",
-        "purpose": "Optional rotation paused by interaction and visibility."
+        "name": "coverflow-transform",
+        "value": "650ms cubic-bezier(.25,1,.5,1)",
+        "purpose": "Manual/automatic card movement, disabled for reduced motion."
+      },
+      {
+        "name": "coverflow-opacity",
+        "value": "450ms ease-out",
+        "purpose": "Card visibility."
+      },
+      {
+        "name": "hero-spring",
+        "value": "stiffness:100; damping:10",
+        "purpose": "Optional fine-pointer photo response."
       }
     ],
     "breakpoints": [
@@ -280,94 +254,111 @@
         "value": "1100px"
       },
       {
-        "name": "stacked",
+        "name": "stack",
         "value": "800px"
       },
       {
-        "name": "coverflow-phone",
+        "name": "hero-override",
+        "value": "760px"
+      },
+      {
+        "name": "coverflow-mobile",
         "value": "600px"
       },
       {
-        "name": "small-phone",
+        "name": "small-gutter",
         "value": "420px"
       },
       {
-        "name": "berry-small",
+        "name": "small-hero",
         "value": "400px"
       }
     ]
   },
   "components": [
     {
-      "name": "Primary button",
+      "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Cocoa action on pale information surfaces.",
-      "html": "<button class=\"ds-primary\">Save your mix</button>",
-      "css": ".ds-primary{display:inline-flex;align-items:center;justify-content:center;background:var(--cocoa,#38251f);color:var(--cream,#fff9ef);border:1px solid var(--cocoa,#38251f);border-radius:100px;min-height:55px;padding:14px 24px;font:650 14px Inter,Arial,sans-serif;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms}.ds-primary:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}.ds-primary:hover{background:var(--midnight,#182b29);box-shadow:0 6px 18px #38251f22}"
+      "description": "Primary Button as used in the current site.",
+      "html": "<button class=\"ds-button-primary\">Explore flavours</button>",
+      "css": ".ds-button-primary{font:650 14px Inter,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding:14px 24px;border-radius:100px;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms,color 160ms;background:#941b3b;color:#fff9ef;border:1px solid #38251f}.ds-button-primary:hover{background:#75172f}.ds-button-primary:focus-visible{outline:3px solid #941b3b;outline-offset:5px}.ds-button-primary:active{transform:scale(.97)}"
     },
     {
-      "name": "Hero primary action",
-      "kind": "button",
-      "refersTo": "hero-primary",
-      "description": "Cream action on the berry photographic ground.",
-      "html": "<div class=\"ds-hero-ground\"><button class=\"ds-hero\">Explore flavours</button></div>",
-      "css": ".ds-hero{display:inline-flex;align-items:center;justify-content:center;background:var(--cream,#fff9ef);color:var(--cocoa,#38251f);border:1px solid var(--cocoa,#38251f);border-radius:100px;min-height:55px;padding:14px 24px;font:650 14px Inter,Arial,sans-serif;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms}.ds-hero:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}.ds-hero-ground{background:var(--berry,#a50e36);padding:24px}.ds-hero{min-height:52px}.ds-hero:hover{background:#f4e6d4}"
-    },
-    {
-      "name": "Outline button",
+      "name": "Outline Button",
       "kind": "button",
       "refersTo": "button-outline",
-      "description": "Secondary pill action on pale surfaces.",
-      "html": "<button class=\"ds-outline\">Meet Mr Gelato</button>",
-      "css": ".ds-outline{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--cocoa,#38251f);border:1px solid var(--cocoa,#38251f);border-radius:100px;min-height:55px;padding:14px 24px;font:650 14px Inter,Arial,sans-serif;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms}.ds-outline:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}.ds-outline:hover{background:#eee8dc}"
+      "description": "Outline Button as used in the current site.",
+      "html": "<button class=\"ds-button-outline\">Explore flavours</button>",
+      "css": ".ds-button-outline{font:650 14px Inter,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding:14px 24px;border-radius:100px;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms,color 160ms;background:transparent;color:#38251f;border:1px solid #38251f}.ds-button-outline:hover{background:#eee8dc}.ds-button-outline:focus-visible{outline:3px solid #941b3b;outline-offset:5px}.ds-button-outline:active{transform:scale(.97)}"
     },
     {
-      "name": "Contact field",
+      "name": "Hero Primary",
+      "kind": "button",
+      "refersTo": "hero-primary",
+      "description": "Hero Primary as used in the current site.",
+      "html": "<button class=\"ds-hero-primary\">Visit us</button>",
+      "css": ".ds-hero-primary{font:650 14px Inter,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding:14px 24px;border-radius:100px;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms,color 160ms;background:#fff9ef;color:#38251f;border:1px solid #38251f}.ds-hero-primary:hover{background:#f4e6d4}.ds-hero-primary:focus-visible{outline:3px solid #941b3b;outline-offset:5px}.ds-hero-primary:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Hero Outline",
+      "kind": "button",
+      "refersTo": "hero-outline",
+      "description": "Hero Outline as used in the current site.",
+      "html": "<button class=\"ds-hero-outline\">Visit us</button>",
+      "css": ".ds-hero-outline{font:650 14px Inter,Arial,sans-serif;display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding:14px 24px;border-radius:100px;cursor:pointer;transition:transform 160ms cubic-bezier(.23,1,.32,1),background 160ms,color 160ms;background:transparent;color:#fff9ef;border:1px solid #fff9ef}.ds-hero-outline:hover{background:rgba(255,249,239,.12)}.ds-hero-outline:focus-visible{outline:3px solid #941b3b;outline-offset:5px}.ds-hero-outline:active{transform:scale(.97)}"
+    },
+    {
+      "name": "Contact Field",
       "kind": "input",
       "refersTo": "contact-field",
-      "description": "Cream native field with warm stroke.",
-      "html": "<label class=\"ds-field-label\">Your email<input class=\"ds-field\" type=\"email\" placeholder=\"you@example.com\"></label>",
-      "css": ".ds-field-label{display:block;font:650 14px Inter,Arial,sans-serif;color:var(--cocoa,#38251f)}.ds-field{display:block;width:100%;font:400 14px Inter,Arial,sans-serif;background:var(--cream,#fff9ef);color:var(--cocoa,#38251f);border:1px solid #b7aa98;border-radius:10px;padding:12px;margin-top:8px}.ds-field:hover{border-color:var(--cocoa,#38251f)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}"
+      "description": "Warm outlined contact field.",
+      "html": "<label class=\"ds-field-label\">Your name<input class=\"ds-field\" placeholder=\"Your name\"></label>",
+      "css": ".ds-field-label{display:grid;gap:8px;font:14px Inter,Arial,sans-serif;color:#38251f}.ds-field{background:#fff9ef;color:#38251f;border:1px solid #b7aa98;border-radius:10px;padding:12px;font:16px Inter,Arial,sans-serif}.ds-field:focus-visible{outline:3px solid #941b3b;outline-offset:5px}"
     },
     {
-      "name": "Selected filter chip",
+      "name": "Menu Filter",
       "kind": "chip",
-      "refersTo": "filter-chip-selected",
-      "description": "Pressed filter selection, paired with aria-pressed.",
-      "html": "<button class=\"ds-chip\" aria-pressed=\"true\">All flavours</button>",
-      "css": ".ds-chip{border:0;background:var(--cocoa,#38251f);color:var(--cream,#fff9ef);padding:9px 17px;border-radius:100px;font:400 12px Inter,Arial,sans-serif;transition:background 160ms,transform 160ms}.ds-chip:hover{background:var(--midnight,#182b29)}.ds-chip:active{transform:scale(.97)}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}"
+      "refersTo": "filter-chip",
+      "description": "Pressed filter state retains text contrast.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"true\">Signature</button>",
+      "css": ".ds-chip{font:12px Inter,Arial,sans-serif;background:transparent;color:#38251f;padding:9px 17px;border:0;border-radius:100px;cursor:pointer;transition:background 160ms,color 160ms}.ds-chip[aria-pressed=true]{background:#38251f;color:#fff9ef}.ds-chip:hover{box-shadow:inset 0 0 0 1px #38251f}.ds-chip:focus-visible{outline:3px solid #941b3b;outline-offset:5px}.ds-chip:active{transform:scale(.97)}"
     },
     {
-      "name": "Inner-page navigation",
+      "name": "Navigation",
       "kind": "nav",
       "refersTo": "navigation",
-      "description": "Frosted cream navigation; homepage uses the berry inversion.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#home\" aria-current=\"page\">Home</a><a href=\"#flavours\">Flavours</a></nav>",
-      "css": ".ds-nav{display:flex;gap:30px;background:var(--nav-glass,rgba(255,249,239,.85));color:var(--cocoa,#38251f);padding:16px 20px;backdrop-filter:blur(16px)}.ds-nav a{position:relative;color:inherit;text-decoration:none;font:550 13px Inter,Arial,sans-serif;padding:16px 0}.ds-nav a[aria-current=page]:after{content:\"\";position:absolute;bottom:6px;left:calc(50% - 7.5px);width:15px;height:3px;border-radius:3px;background:var(--cocoa,#38251f)}.ds-nav a:hover{color:#749056}.ds-primary:focus-visible,.ds-hero:focus-visible,.ds-outline:focus-visible,.ds-field:focus-visible,.ds-chip:focus-visible,.ds-nav a:focus-visible{outline:3px solid var(--focus,#406548);outline-offset:5px}"
+      "description": "Inner-page ivory navigation.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#home\" aria-current=\"page\">Home</a><a href=\"#menu\">Menu</a><a href=\"#visit\">Visit us</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px;background:#fff9ef;color:#38251f;font:550 13px Inter,Arial,sans-serif}.ds-nav a{position:relative;padding:16px 0;color:inherit;text-decoration:none}.ds-nav a[aria-current=page]:after{content:\"\";position:absolute;bottom:6px;left:calc(50% - 7.5px);height:3px;width:15px;border-radius:3px;background:#38251f}.ds-nav a:hover{text-decoration:underline}.ds-nav a:focus-visible{outline:3px solid #941b3b;outline-offset:5px}"
     },
     {
-      "name": "Coverflow card",
+      "name": "Signature Card Caption",
       "kind": "card",
-      "description": "Static preview of the active photographic-card content surface.",
-      "html": "<article class=\"ds-card\"><span class=\"ds-tag\">Fruit favourite</span><h3>Mango</h3><p>A little sunshine</p><button class=\"ds-card-cta\">Build with Mango</button></article>",
-      "css": ".ds-card{max-width:320px;padding:22px 24px;border-radius:20px;background:linear-gradient(180deg,#3d332b,#081717);border:1px solid #fff9ef33;box-shadow:0 24px 50px #0005;text-align:center;color:var(--cream,#fff9ef)}.ds-tag{display:block;text-align:right;font:400 11px Inter,Arial,sans-serif}.ds-card h3{font:800 34px/1.1 Jakarta,Arial,sans-serif;letter-spacing:-.035em;margin:80px 0 12px}.ds-card p{font:600 15px/1.4 Inter,Arial,sans-serif;color:var(--pistachio,#d8e8b5)}.ds-card-cta{padding:11px 18px;min-height:44px;border:0;border-radius:30px;background:var(--pistachio,#d8e8b5);color:var(--midnight,#182b29);font:750 12px Inter,Arial,sans-serif}.ds-card-cta:hover{background:var(--pink,#f2b7c9)}.ds-card-cta:active{transform:scale(.96)}.ds-card-cta:focus-visible{outline:3px solid #f2b7c9;outline-offset:4px}"
+      "description": "Caption-band excerpt; photo omitted from this isolated preview.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-photo\" aria-label=\"Photography region\"></div><div class=\"ds-caption\"><h3>Strawberry Cheese Cake</h3><a href=\"#menu\">Explore flavour</a></div></article>",
+      "css": ".ds-card{width:330px;height:405px;border:1px solid #c7b39d;border-radius:14px;overflow:hidden;background:#fff9ef;box-shadow:0 12px 26px #38251f1a}.ds-card-photo{height:315px;background:#efe4d4}.ds-caption{height:90px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#fff9ef}.ds-caption h3{margin:0;font:700 18px/1.25 Jakarta,Arial,sans-serif;letter-spacing:-.03em;color:#38251f}.ds-caption a{font:500 14px Inter,Arial,sans-serif;color:#941b3b;text-decoration:none;min-height:32px;display:flex;align-items:center}.ds-caption a:hover{text-decoration:underline}.ds-caption a:focus-visible{outline:3px solid #941b3b;outline-offset:4px}.ds-caption a:active{transform:scale(.96)}"
     }
   ],
   "narrative": {
-    "northStar": "The Happy Scoop Stage",
-    "overview": "Berry red sets an appetising photographic stage; cream actions and heavy, close-set headings keep Mr Gelato immediate. Warm cream and cocoa support the reading surfaces, while pistachio and strawberry remain flavour accents. The approved hero direction replaces the earlier floating cone composition.\n\nGenerous section separation surrounds compact navigation and controls. Product depth responds gently to a fine pointer; coverflow exploration and the concept pint remain optional enhancements to a frontend-only sample.",
+    "northStar": "The Welcoming Scoop Café",
+    "overview": "Ivory connects the café reading surfaces; chocolate provides structure and wine berry accents its actions. Bright food photography carries appetite, with cream text over the berry hero and plain ivory caption bands beneath signature photography. The temporary Mr Gelato wordmark retains the locally shipped Jakarta display face and Inter reading face.\n\nGenerous section spacing surrounds compact pill controls, warm outlines and softly lifted photographic cards. Optional pointer and coverflow motion supports exploration without becoming a requirement for reading or navigation.",
     "keyCharacteristics": [
-      "Berry-red photography with cream foreground actions.",
-      "Heavy Jakarta headings with restrained Inter reading text.",
-      "Cream information surfaces, pill controls and rounded product imagery.",
-      "Midnight coverflow with soft photographic depth.",
-      "Optional motion with reduced-motion and global pause controls."
+      "Ivory surfaces with chocolate text and wine-berry actions.",
+      "Heavy Jakarta headings with Inter reading and controls.",
+      "Bright illustrative photography and separate pale caption bands.",
+      "Pill controls, warm boundaries and diffuse product depth.",
+      "Optional motion with reduced-motion and pause behavior."
     ],
     "rules": [
       {
-        "name": "The Cocoa Structure Rule",
-        "body": "Keep cocoa text and outlines as the default structure on pale surfaces; use cream foregrounds on berry and midnight grounds.",
+        "name": "The Ivory Continuity Rule",
+        "body": "Keep reading sections on ivory; let photography and berry actions carry the colour changes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Chocolate Structure Rule",
+        "body": "Keep chocolate text and outlines as the default structure on pale surfaces; use cream foregrounds on berry and chocolate grounds.",
         "section": "colors"
       },
       {
@@ -377,20 +368,21 @@
       },
       {
         "name": "The Soft Stage Rule",
-        "body": "Keep product depth diffuse and information surfaces quiet; use the existing frosted overlays where they support labels.",
+        "body": "Keep product depth diffuse and information surfaces quiet.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do keep cocoa structure on pale surfaces and cream foregrounds on berry or midnight.",
-      "Do keep Jakarta headings and Inter reading/control text.",
-      "Do preserve keyboard focus, pressed/checked semantics and reduced-motion behavior.",
-      "Do keep the homepage coverflow directly after the hero and retain the full menu collection."
+      "**Do** keep ivory reading surfaces, chocolate structure and wine-berry actions.",
+      "**Do** keep Jakarta headings and Inter reading/control text.",
+      "**Do** preserve keyboard focus, pressed/checked semantics and reduced-motion behavior.",
+      "**Do** use separate pale caption bands beneath signature photography."
     ],
     "donts": [
-      "Don't present illustrative imagery or location previews as verified brand evidence.",
-      "Don't make optional motion a requirement for reading or completing controls.",
-      "Don't turn tiny annotations or decorative eyebrows into default reading or heading roles.\r"
+      "**Don't** present illustrative photography or location previews as verified brand evidence.",
+      "**Don't** make optional motion a requirement for reading or completing controls.",
+      "**Don't** introduce green UI fields or dark photographic card overlays into the ivory direction.",
+      "**Don't** turn tiny annotations or decorative eyebrows into default reading or heading roles."
     ]
   }
 }
