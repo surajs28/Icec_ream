@@ -24,7 +24,7 @@ body[data-page="index.html"] .nav-menu{background:var(--cream);color:var(--berry
 .berry-hero .btn svg{height:18px;width:18px}
 .homepage-collection-link{display:flex;justify-content:center;background:var(--midnight);padding:0 20px 38px;color:var(--cream)}
 .homepage-collection-link .btn{color:var(--cream);border-color:rgba(255,249,239,.5)}
-.coverflow-kicker{display:none}.coverflow{padding-top:54px;padding-bottom:26px}.coverflow-heading{font-size:clamp(30px,3.5vw,48px)}
+.coverflow-kicker{display:none}.coverflow{padding-top:54px;padding-bottom:26px;margin-top:0}.coverflow-heading{font-size:clamp(30px,3.5vw,48px)}
 .section{padding-block:clamp(64px,6.5vw,100px)}
 .story-text p{font-size:16px;line-height:1.75;max-width:60ch}.story-text p.lead{font-size:19px}
 .story-bento{gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -40,7 +40,7 @@ body[data-page="index.html"] .nav-menu{background:var(--cream);color:var(--berry
  .nav-shell{min-height:72px}.nav-menu{padding:9px 16px;font-size:12px;min-height:40px}
  body[data-page="index.html"] #main-nav{background:var(--berry-dark);border-color:rgba(255,249,239,.3)}body[data-page="index.html"] .menu-toggle{color:var(--cream)}
  .berry-hero{height:auto;min-height:650px;display:flex;flex-direction:column;padding-top:72px}
- .berry-hero:after{display:none}.berry-hero .hero-grid{padding-top:34px;padding-bottom:24px;display:block;height:auto;width:100%}
+ .berry-hero:after{display:none}.berry-hero .hero-grid{padding-top:34px;padding-bottom:24px;display:block;height:auto;width:calc(100% - 40px)}
  .berry-hero .hero-copy{width:100%;max-width:560px}.berry-hero h1{font-size:clamp(44px,9.7vw,72px);max-width:13ch;line-height:1.04}
  .berry-hero .hero-copy>p{font-size:17px;margin-top:18px;max-width:31ch}.berry-hero .hero-actions{margin-top:24px;gap:12px}.berry-hero .btn{font-size:13px;min-height:48px;padding:12px 20px}
  .berry-hero-image{position:relative;inset:auto;order:2;height:330px;width:100%;z-index:0;margin-top:auto}.berry-hero-photo,.berry-hero-image>img{object-position:76% center;object-fit:cover}
@@ -50,3 +50,4 @@ body[data-page="index.html"] .nav-menu{background:var(--cream);color:var(--berry
 @media(max-width:400px){.berry-hero h1{font-size:44px}.berry-hero .btn{padding-inline:16px}.berry-hero-image{height:290px}.berry-hero{min-height:630px}.nav-shell{gap:8px}body[data-page="index.html"] .brand{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.berry-hero-photo{transform:none!important}.nav-menu{transition:none}}
 html.motion-paused .berry-hero-photo{transform:none!important}
+
