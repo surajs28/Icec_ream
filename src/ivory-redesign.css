@@ -49,5 +49,10 @@ html{scrollbar-color:#aa536a var(--cream)}
 @media(hover:hover) and (pointer:fine){
  .flavour-card:hover .signature-menu-photo{transform:scale(1.035)}
  .flavour-card:hover .flavour-image img{transform:scale(1.035)}
+ .cafe-category .category-photo{transition:transform 250ms var(--ease-out)}
+ .cafe-category a:hover .category-photo{transform:translateY(-4px) scale(1.015)}
  .coverflow-cta:hover svg,.cafe-category a:hover .category-link svg,.btn:hover svg{transform:translateX(3px)}
 }
+.page-transition{position:fixed;inset:0;z-index:9999;background:var(--berry);pointer-events:none;transform:scaleY(1);transform-origin:top;will-change:transform}
+@media(prefers-reduced-motion:reduce){.page-transition{display:none}.story-visual,.story-text>*,.cafe-category,.cafe-experience-grid figure,.cafe-experience-grid>div>*,.visit-copy>*,.map-preview,.page-intro>*,.builder-section .section-head>*,.pint-stage,.pint-controls,.footer-top>div{transform:none!important;opacity:1!important;clip-path:none!important}}
+html.motion-paused .story-visual,html.motion-paused .story-text>*,html.motion-paused .cafe-category,html.motion-paused .cafe-experience-grid figure,html.motion-paused .cafe-experience-grid>div>*,html.motion-paused .visit-copy>*,html.motion-paused .map-preview,html.motion-paused .page-intro>*,html.motion-paused .builder-section .section-head>*,html.motion-paused .pint-stage,html.motion-paused .pint-controls,html.motion-paused .footer-top>div{transform:none!important;opacity:1!important;clip-path:none!important}

@@ -3,7 +3,9 @@ import {createIcons,ArrowUpRight,ArrowRight,Menu, X, Sparkles, Heart, MoveHorizo
 import confetti from 'canvas-confetti';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Flip } from 'gsap/Flip';
 const iconSet={ArrowUpRight,ArrowRight,Menu,X,Sparkles,Heart,MoveHorizontal,RotateCcw,Asterisk,Search,Info,Wind,Cherry,IceCreamCone,Download,Star,MapPin,Clock3,Plus,Minus,Camera,Users,Pause,Play,Cake,BriefcaseBusiness};
+gsap.registerPlugin(ScrollTrigger,Flip);
 const icons=()=>createIcons({icons:iconSet,attrs:{'aria-hidden':'true'}});
 const $=selector=>document.querySelector(selector), $$=selector=>[...document.querySelectorAll(selector)];
 const motionQuery=matchMedia('(prefers-reduced-motion: reduce)');
@@ -55,7 +57,7 @@ const featured=$('#flavour-grid');let filter='All';const menuCards=new Map();
 function renderMenu(animateChange=false){
  if(!featured)return;const term=$('#flavour-search').value.trim().toLowerCase();const all=products.filter(p=>(filter==='All'||p.category===filter)&&p.name.toLowerCase().includes(term));
  const selected=filter==='All'&&!term?all.slice(0,Number(featured.dataset.limit)):all;
- const previous=new Map([...featured.children].map(card=>[card.dataset.flavour,card.getBoundingClientRect()]));
+ const flipState=animateChange&&!reduced()?Flip.getState([...featured.children]):null;
  featured.querySelectorAll('.flavour-card').forEach(card=>card.getAnimations?.().forEach(animation=>animation.cancel()));
  featured.replaceChildren();$('#menu-count').textContent=`${selected.length} flavours shown${selected.length<all.length?' of '+all.length:''}`;
  if(!selected.length){const box=document.createElement('div');box.className='empty-results';const h=document.createElement('h3');h.textContent=filter==='Vegan'?'Vegan details are on their way.':'No scoops found.';const p=document.createElement('p');p.textContent=filter==='Vegan'?'We’ll add this collection once recipes and dietary suitability are confirmed.':'Try another flavour name or clear your filters.';const button=document.createElement('button');button.type='button';button.className='btn outline';button.textContent='Show all scoops';button.addEventListener('click',()=>{filter='All';$('#flavour-search').value='';$$('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter==='All')));renderMenu();$('#flavour-search').focus();});box.append(h,p,button);featured.append(box);return;}
@@ -72,11 +74,9 @@ function renderMenu(animateChange=false){
   bottom.append(nutrition,add);card.append(art,h,p,bottom);featured.append(card);
  }
  icons();
- if(animateChange&&!reduced())for(const card of featured.children){
-  if(!card.animate)continue;const old=previous.get(card.dataset.flavour),next=card.getBoundingClientRect();
-  const frames=old?[{transform:`translate(${old.left-next.left}px,${old.top-next.top}px)`},{transform:'translate(0px,0px)'}]:[{opacity:.25,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0px)'}];
-  card.animate(frames,{duration:250,easing:'cubic-bezier(.23,1,.32,1)'});
- }
+ if(flipState)Flip.from(flipState,{duration:.28,ease:'power3.inOut',absolute:true,stagger:.018,prune:true,
+  onEnter:elements=>gsap.fromTo(elements,{opacity:0,y:8},{opacity:1,y:0,duration:.24,ease:'power3.out'}),
+  onLeave:elements=>gsap.to(elements,{opacity:0,y:-6,duration:.18,ease:'power2.out'})});
 }
 $$('[data-filter]').forEach(button=>button.addEventListener('click',e=>{filter=button.dataset.filter;$$('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderMenu(e.detail>0);}));
 $('#flavour-search')?.addEventListener('input',()=>renderMenu());
@@ -107,9 +107,6 @@ $('#map-in')?.addEventListener('click',()=>{zoom=Math.min(1.6,zoom+.2);updateMap
 const contact=$('#contact-form');if(contact){const reason=new URLSearchParams(location.search).get('reason');if(reason){const option=[...$('#contact-reason').options].find(o=>o.value.toLowerCase()===reason.toLowerCase());if(option)$('#contact-reason').value=option.value;}contact.addEventListener('submit',e=>{e.preventDefault();if(!contact.reportValidity())return;const subject='Mr Gelato: '+$('#contact-reason').value;const body=`Hello Mr Gelato,\n\n${$('#contact-message').value.trim()}\n\n${$('#contact-name').value.trim()}`;const a=document.createElement('a');a.href=`mailto:query@mrgelato.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;a.click();$('#contact-status').textContent='Your email app will open. If it doesn’t, email query@mrgelato.in directly.';});}
 
 const fine=matchMedia('(hover: hover) and (pointer: fine)');
-// One focal arrival: copy settles first, the scoop photograph uncrops alongside it.
-// Supporting sections remain still; only the story photograph reveals once.
-if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){observer.unobserve(entry.target);if(!reduced()&&entry.target.animate)entry.target.animate([{clipPath:'inset(0 0 14% 0)',opacity:.7},{clipPath:'inset(0 0 0% 0)',opacity:1}],{duration:600,easing:'cubic-bezier(.77,0,.175,1)'});}},{threshold:.2});$$('.story-visual').forEach(el=>observer.observe(el));}
 let heroMotionContext;
 function splitHeroHeading(){
  const heading=$('.hero-copy h1');
@@ -127,8 +124,9 @@ function setupHeroMotion(){
  heroMotionContext=gsap.context(()=>{
   const lines=$$('.hero-line'),navItems=$$('.site-header .brand, .site-header nav a, .site-header .nav-actions'),paragraph=$('.hero-copy>p'),buttons=$$('.hero-actions .btn');
   const intro=gsap.timeline({defaults:{ease:'power3.out'}});
+  if(matchMedia('(min-width: 801px)').matches)intro.fromTo(image,{clipPath:'inset(0 0 0 42%)',opacity:.82,scale:1.035},{clipPath:'inset(0 0 0 0%)',opacity:1,scale:1,duration:1.15,ease:'power4.out'},0);
+  else gsap.fromTo(image,{clipPath:'inset(0 0 14% 0)',opacity:.8,y:14},{clipPath:'inset(0 0 0% 0)',opacity:1,y:0,duration:.72,ease:'power4.out',scrollTrigger:{trigger:image,start:'top 94%',once:true}});
   intro
-   .fromTo(image,{clipPath:'inset(0 0 0 42%)',opacity:.82,scale:1.035},{clipPath:'inset(0 0 0 0%)',opacity:1,scale:1,duration:1.15,ease:'power4.out'},0)
    .fromTo(navItems,{opacity:0,y:-14},{opacity:1,y:0,duration:.55,stagger:.045},.08)
    .fromTo(lines,{yPercent:108},{yPercent:0,duration:.82,stagger:.09,ease:'power4.out'},.2)
    .fromTo(paragraph,{opacity:0,y:12},{opacity:1,y:0,duration:.65},.48)
@@ -176,6 +174,56 @@ function animateCoverflowChange(){
 window.addEventListener('gelato-coverflow-ready',setupCoverflowMotion);
 window.addEventListener('gelato-coverflow-change',animateCoverflowChange);
 window.addEventListener('gelato-motion',setupCoverflowMotion);
+let editorialMotionContext;
+function setupEditorialMotion(){
+ editorialMotionContext?.revert();editorialMotionContext=null;
+ if(reduced())return;
+ editorialMotionContext=gsap.context(()=>{
+  const once=(trigger,build,start='top 82%')=>{if(!trigger)return;const timeline=build();ScrollTrigger.create({trigger,start,once:true,onEnter:()=>timeline.play()});requestAnimationFrame(()=>{const box=trigger.getBoundingClientRect();if(box.bottom<=0)timeline.progress(1);else if(box.top<innerHeight*.82&&box.bottom>0)timeline.play();});};
+  const story=$('.story-section');
+  once(story,()=>gsap.timeline({paused:true})
+   .fromTo(story.querySelector('.story-visual'),{clipPath:'inset(0 0 16% 0)',opacity:.75},{clipPath:'inset(0 0 0% 0)',opacity:1,duration:.8,ease:'power4.out'})
+   .fromTo(story.querySelectorAll('.story-text>*'),{opacity:0,y:16},{opacity:1,y:0,duration:.55,stagger:.065,ease:'power3.out'},.16));
+  if(story)gsap.matchMedia().add('(min-width: 801px) and (prefers-reduced-motion: no-preference)',()=>gsap.to(story.querySelector('.story-visual img'),{yPercent:5,ease:'none',scrollTrigger:{trigger:story,start:'top bottom',end:'bottom top',scrub:.7}}));
+  $$('.cafe-menu-section').forEach(section=>once(section,()=>gsap.timeline({paused:true})
+   .fromTo(section.querySelectorAll('.section-head>*'),{opacity:0,y:12},{opacity:1,y:0,duration:.5,stagger:.06,ease:'power3.out'})
+   .fromTo(section.querySelectorAll('.cafe-category'),{opacity:0,y:20,scale:.975},{opacity:1,y:0,scale:1,duration:.58,stagger:.065,ease:'power4.out'},.12)));
+  const experience=$('.cafe-experience-section');
+  once(experience,()=>gsap.timeline({paused:true})
+   .fromTo(experience.querySelector('figure'),{clipPath:'inset(0 12% 0 0)',opacity:.75},{clipPath:'inset(0 0% 0 0)',opacity:1,duration:.75,ease:'power4.out'})
+   .fromTo(experience.querySelectorAll('.cafe-experience-grid>div>*'),{opacity:0,y:14},{opacity:1,y:0,duration:.5,stagger:.06,ease:'power3.out'},.16));
+  const visit=$('.visit-section');
+  once(visit,()=>gsap.timeline({paused:true})
+   .fromTo(visit.querySelectorAll('.visit-copy>*'),{opacity:0,y:14},{opacity:1,y:0,duration:.52,stagger:.055,ease:'power3.out'})
+   .fromTo(visit.querySelector('.map-preview'),{opacity:0,scale:.975},{opacity:1,scale:1,duration:.7,ease:'power4.out'},.08)
+   .fromTo(visit.querySelector('.map-pin'),{opacity:0,scale:.86,y:-12},{opacity:1,scale:1,y:0,duration:.55,ease:'back.out(1.35)'},.42)
+   .fromTo(visit.querySelector('.map-label'),{opacity:0,y:8},{opacity:1,y:0,duration:.4,ease:'power3.out'},.52));
+  const pageIntro=$('.page-intro');
+  once(pageIntro,()=>gsap.timeline({paused:true}).fromTo(pageIntro.querySelectorAll('h1,p'),{opacity:0,y:16},{opacity:1,y:0,duration:.6,stagger:.07,ease:'power4.out'}),'top 92%');
+  const builder=$('.builder-section');
+  once(builder,()=>gsap.timeline({paused:true})
+   .fromTo(builder.querySelectorAll('.section-head>*'),{opacity:0,y:12},{opacity:1,y:0,duration:.5,stagger:.06,ease:'power3.out'})
+   .fromTo(builder.querySelector('.pint-stage'),{opacity:0,scale:.975},{opacity:1,scale:1,duration:.65,ease:'power4.out'},.12)
+   .fromTo(builder.querySelector('.pint-controls'),{opacity:0,x:18},{opacity:1,x:0,duration:.58,ease:'power3.out'},.18));
+  const footer=$('.footer');
+  once(footer,()=>gsap.timeline({paused:true}).fromTo(footer.querySelectorAll('.footer-top>div'),{opacity:0,y:12},{opacity:1,y:0,duration:.46,stagger:.05,ease:'power3.out'}),'top 94%');
+ },document.body);
+}
+function setupPageTransitions(){
+ if($('.page-transition'))return;
+ const veil=document.createElement('div');veil.className='page-transition';veil.setAttribute('aria-hidden','true');document.body.append(veil);
+ if(!reduced())gsap.fromTo(veil,{scaleY:1,transformOrigin:'top'},{scaleY:0,duration:.55,ease:'power4.inOut'});else gsap.set(veil,{scaleY:0});
+ document.addEventListener('click',event=>{
+  const link=event.target.closest('a');
+  if(!link||event.defaultPrevented||event.detail===0||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||reduced())return;
+  const url=new URL(link.href,location.href);
+  if(url.origin!==location.origin||url.pathname===location.pathname&&url.hash||link.target||url.protocol==='mailto:')return;
+  event.preventDefault();gsap.set(veil,{transformOrigin:'bottom'});gsap.to(veil,{scaleY:1,duration:.38,ease:'power3.inOut',onComplete:()=>location.href=url.href});
+ });
+ window.addEventListener('pageshow',()=>gsap.set(veil,{scaleY:0}));
+}
+setupEditorialMotion();setupPageTransitions();
+window.addEventListener('gelato-motion',setupEditorialMotion);
 $$('[data-scoop]').forEach(button=>button.addEventListener('click',()=>{$$('[data-scoop]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));window.dispatchEvent(new CustomEvent('gelato-scoop',{detail:button.dataset.scoop}));}));
 const stage=$('#gelato-stage');
 if(stage?.dataset.hero==='realistic'){
