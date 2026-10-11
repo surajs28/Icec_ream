@@ -16,6 +16,7 @@ body[data-page="index.html"] .nav-menu{background:var(--cream);color:var(--berry
 .berry-hero .hero-grid{display:flex;align-items:center;height:100%;min-height:0;padding-top:70px;padding-bottom:35px;position:relative}
 .berry-hero .hero-copy{width:48%;padding:0;margin:0}
 .berry-hero h1{font-family:Jakarta,Arial,sans-serif;font-size:clamp(52px,6.1vw,96px);font-weight:800;letter-spacing:-.04em;line-height:1.01;color:var(--cream);margin:0;text-wrap:balance}
+.hero-line-mask{display:block;overflow:clip;padding-bottom:.08em;margin-bottom:-.08em}.hero-line{display:block;will-change:transform}
 .berry-hero .hero-copy>p{font-size:clamp(16px,1.55vw,23px);line-height:1.4;max-width:34ch;margin:22px 0 0;color:var(--cream)}
 .berry-hero .hero-actions{margin-top:28px;gap:18px;flex-wrap:wrap}
 .berry-hero .btn{min-height:52px;font-size:14px;padding:14px 24px;gap:14px}
@@ -48,7 +49,8 @@ body[data-page="index.html"] .nav-menu{background:var(--cream);color:var(--berry
  .coverflow{padding-top:42px}.homepage-collection-link{padding-bottom:32px}
 }
 @media(max-width:400px){.berry-hero h1{font-size:44px}.berry-hero .btn{padding-inline:16px}.berry-hero-image{height:290px}.berry-hero{min-height:630px}.nav-shell{gap:8px}body[data-page="index.html"] .brand{font-size:26px}}
-@media(prefers-reduced-motion:reduce){.berry-hero-photo{transform:none!important}.nav-menu{transition:none}}
+@media(prefers-reduced-motion:reduce){.berry-hero-photo,.berry-hero-image,.hero-copy,.hero-line{transform:none!important}.berry-hero-image,.hero-copy,.hero-line{opacity:1!important;clip-path:none!important;filter:none!important}.nav-menu{transition:none}}
 html.motion-paused .berry-hero-photo{transform:none!important}
+html.motion-paused .berry-hero-image,html.motion-paused .hero-copy,html.motion-paused .hero-line{transform:none!important;opacity:1!important;clip-path:none!important;filter:none!important}
 
 

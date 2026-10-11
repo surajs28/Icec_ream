@@ -95,6 +95,15 @@ export function CoverFlowCarousel({
     if (typeof ResizeObserver === "undefined") { window.addEventListener("resize", update); return () => window.removeEventListener("resize", update); }
     const observer = new ResizeObserver(update); observer.observe(stage.current); return () => observer.disconnect();
   }, [total]);
+  useEffect(() => {
+    if (!section.current) return;
+    section.current.dataset.motionReady = "true";
+    window.dispatchEvent(new CustomEvent("gelato-coverflow-ready"));
+  }, []);
+  useEffect(() => {
+    if (!section.current) return;
+    window.dispatchEvent(new CustomEvent("gelato-coverflow-change", { detail: { index } }));
+  }, [index]);
 
   const move = useCallback((delta: number, manual = true) => {
     if (total <= 1) return;
@@ -174,20 +183,23 @@ export function CoverFlowCarousel({
             return (
               <motion.article key={`${item.titleLine1}-${idx}`} className="coverflow-card" role="group" aria-roledescription="slide"
                 aria-label={`${idx + 1} of ${total}: ${item.titleLine1}`} aria-hidden={!center}
+                data-active={center ? "true" : "false"} data-slide-index={idx}
                 initial={false} animate={{ transform: `translateX(${x}px) scale(${scale}) rotateY(${reduceMotion ? 0 : turn}deg)`, opacity }} transition={transition}
                 style={{ width: cardWidth, zIndex: 30 - distance * 10, pointerEvents: shown ? "auto" : "none" }}>
-                {item.imagePosition ? <div className="coverflow-photo atlas-photo" role="img" aria-label={item.imgAlt || item.titleLine1}
-                  style={{ backgroundImage: `url(${item.img})`, backgroundPosition: item.imagePosition }} /> :
-                  <img className="coverflow-photo" src={item.img} alt={item.imgAlt || item.titleLine1} loading="lazy" decoding="async" />}
-                {!center && shown && <button className="coverflow-select" type="button" tabIndex={-1} onClick={() => goToSlide(idx)} aria-label={`Show ${item.titleLine1}`} />}
-                <div className="coverflow-content" style={{ opacity: 1, pointerEvents: center ? "auto" : "none", transition: reduceMotion ? "none" : "opacity 300ms ease-out" }}>
-                  
-                  <div className="coverflow-body"><h3>{item.titleLine1}</h3>{item.titleLine2 && <p className="coverflow-subtitle">{item.titleLine2}</p>}
-                    {item.desc && <p className="coverflow-description">{item.desc}</p>}
-                    <a className="coverflow-cta" href={item.ctaUrl || "#flavours"} tabIndex={center ? 0 : -1}
-                      onClick={e => { if (onCtaClick) { e.preventDefault(); onCtaClick(item); } }}>
-                      {item.ctaText || "View menu"}<ArrowRight size={16} aria-hidden="true" />
-                    </a>
+                <div className="coverflow-card-surface">
+                  {item.imagePosition ? <div className="coverflow-photo atlas-photo" role="img" aria-label={item.imgAlt || item.titleLine1}
+                    style={{ backgroundImage: `url(${item.img})`, backgroundPosition: item.imagePosition }} /> :
+                    <img className="coverflow-photo" src={item.img} alt={item.imgAlt || item.titleLine1} loading="lazy" decoding="async" />}
+                  <span className="coverflow-light" aria-hidden="true" />
+                  {!center && shown && <button className="coverflow-select" type="button" tabIndex={-1} onClick={() => goToSlide(idx)} aria-label={`Show ${item.titleLine1}`} />}
+                  <div className="coverflow-content" style={{ pointerEvents: center ? "auto" : "none" }}>
+                    <div className="coverflow-body"><h3>{item.titleLine1}</h3>{item.titleLine2 && <p className="coverflow-subtitle">{item.titleLine2}</p>}
+                      {item.desc && <p className="coverflow-description">{item.desc}</p>}
+                      <a className="coverflow-cta" href={item.ctaUrl || "#flavours"} tabIndex={center ? 0 : -1}
+                        onClick={e => { if (onCtaClick) { e.preventDefault(); onCtaClick(item); } }}>
+                        {item.ctaText || "View menu"}<ArrowRight size={16} aria-hidden="true" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </motion.article>

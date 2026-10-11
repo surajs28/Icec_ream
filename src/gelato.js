@@ -1,6 +1,8 @@
 import { signatureFlavours } from "./signature-flavours";
 import {createIcons,ArrowUpRight,ArrowRight,Menu, X, Sparkles, Heart, MoveHorizontal,RotateCcw,Asterisk,Search,Info,Wind,Cherry,IceCreamCone,Download,Star,MapPin,Clock3,Plus,Minus,Camera,Users,Pause,Play,Cake,BriefcaseBusiness} from 'lucide';
 import confetti from 'canvas-confetti';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const iconSet={ArrowUpRight,ArrowRight,Menu,X,Sparkles,Heart,MoveHorizontal,RotateCcw,Asterisk,Search,Info,Wind,Cherry,IceCreamCone,Download,Star,MapPin,Clock3,Plus,Minus,Camera,Users,Pause,Play,Cake,BriefcaseBusiness};
 const icons=()=>createIcons({icons:iconSet,attrs:{'aria-hidden':'true'}});
 const $=selector=>document.querySelector(selector), $$=selector=>[...document.querySelectorAll(selector)];
@@ -108,10 +110,72 @@ const fine=matchMedia('(hover: hover) and (pointer: fine)');
 // One focal arrival: copy settles first, the scoop photograph uncrops alongside it.
 // Supporting sections remain still; only the story photograph reveals once.
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){observer.unobserve(entry.target);if(!reduced()&&entry.target.animate)entry.target.animate([{clipPath:'inset(0 0 14% 0)',opacity:.7},{clipPath:'inset(0 0 0% 0)',opacity:1}],{duration:600,easing:'cubic-bezier(.77,0,.175,1)'});}},{threshold:.2});$$('.story-visual').forEach(el=>observer.observe(el));}
-if($('.hero-copy')&&!reduced()){
- const image=$('.berry-hero-image');image?.animate?.([{clipPath:'inset(0 3% 0 0)',opacity:.7},{clipPath:'inset(0 0% 0 0)',opacity:1}],{duration:700,easing:'cubic-bezier(.23,1,.32,1)'});
- [$('.hero-copy h1'),$('.hero-copy>p'),$('.hero-actions')].forEach((el,i)=>el?.animate?.([{opacity:.35,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0px)'}],{duration:500,delay:i*50,easing:'cubic-bezier(.23,1,.32,1)',fill:'backwards'}));
+let heroMotionContext;
+function splitHeroHeading(){
+ const heading=$('.hero-copy h1');
+ if(!heading||heading.dataset.motionSplit)return heading;
+ const lines=heading.innerHTML.split(/<br\s*\/?>/i);
+ heading.innerHTML=lines.map(line=>`<span class="hero-line-mask"><span class="hero-line">${line.trim()}</span></span>`).join('');
+ heading.dataset.motionSplit='true';
+ return heading;
 }
+function setupHeroMotion(){
+ heroMotionContext?.revert();heroMotionContext=null;
+ const hero=$('.berry-hero'),copy=$('.hero-copy'),image=$('.berry-hero-image'),heading=splitHeroHeading();
+ if(!hero||!copy||!image||!heading||reduced())return;
+ gsap.registerPlugin(ScrollTrigger);
+ heroMotionContext=gsap.context(()=>{
+  const lines=$$('.hero-line'),navItems=$$('.site-header .brand, .site-header nav a, .site-header .nav-actions'),paragraph=$('.hero-copy>p'),buttons=$$('.hero-actions .btn');
+  const intro=gsap.timeline({defaults:{ease:'power3.out'}});
+  intro
+   .fromTo(image,{clipPath:'inset(0 0 0 42%)',opacity:.82,scale:1.035},{clipPath:'inset(0 0 0 0%)',opacity:1,scale:1,duration:1.15,ease:'power4.out'},0)
+   .fromTo(navItems,{opacity:0,y:-14},{opacity:1,y:0,duration:.55,stagger:.045},.08)
+   .fromTo(lines,{yPercent:108},{yPercent:0,duration:.82,stagger:.09,ease:'power4.out'},.2)
+   .fromTo(paragraph,{opacity:0,y:12},{opacity:1,y:0,duration:.65},.48)
+   .fromTo(buttons,{opacity:0,y:14},{opacity:1,y:0,duration:.55,stagger:.08},.62);
+  gsap.matchMedia().add('(min-width: 801px) and (prefers-reduced-motion: no-preference)',()=>{
+   const scroll=gsap.timeline({scrollTrigger:{trigger:hero,start:'top top',end:'bottom 28%',scrub:.65}});
+   scroll.to(copy,{yPercent:-7,opacity:.3,ease:'none'},0).to(image,{yPercent:4,scale:1.025,ease:'none'},0);
+   return()=>scroll.scrollTrigger?.kill();
+  });
+ },hero);
+}
+setupHeroMotion();
+window.addEventListener('gelato-motion',setupHeroMotion);
+let coverflowMotionContext;
+function setupCoverflowMotion(){
+ coverflowMotionContext?.revert();coverflowMotionContext=null;
+ const root=$('.coverflow');
+ if(!root)return;
+ if(reduced()){root.dataset.motionEntered='true';return;}
+ coverflowMotionContext=gsap.context(()=>{
+  const heading=$$('.coverflow-heading h2, .coverflow-heading p, .coverflow-heading .btn');
+  const surfaces=$$('.coverflow-card-surface');
+  const controls=$$('.coverflow-controls, .coverflow-credit');
+  let played=false;
+  const reveal=gsap.timeline({paused:true,onStart:()=>{played=true;root.dataset.motionEntered='true';}})
+   .fromTo(heading,{opacity:0,y:14},{opacity:1,y:0,duration:.55,stagger:.06,ease:'power3.out'},0)
+   .fromTo(surfaces,{opacity:0,y:24,scale:.965},{opacity:1,y:0,scale:1,duration:.72,stagger:{each:.065,from:'center'},ease:'power4.out'},.16)
+   .fromTo(controls,{opacity:0,y:8},{opacity:1,y:0,duration:.42,stagger:.05,ease:'power3.out'},.48);
+  const trigger=ScrollTrigger.create({trigger:root,start:'top 82%',once:true,onEnter:()=>reveal.play()});
+  requestAnimationFrame(()=>{if(!played&&root.getBoundingClientRect().top<innerHeight*.82)reveal.play();});
+  return()=>trigger.kill();
+ },root);
+}
+function animateCoverflowChange(){
+ const root=$('.coverflow');
+ if(!root||root.dataset.motionEntered!=='true'||reduced())return;
+ const active=root.querySelector('.coverflow-card[data-active="true"]');
+ if(!active)return;
+ const body=active.querySelector('.coverflow-body'),photo=active.querySelector('.coverflow-photo'),light=active.querySelector('.coverflow-light');
+ gsap.killTweensOf([body,photo,light]);
+ gsap.fromTo(body,{opacity:.68,y:6},{opacity:1,y:0,duration:.28,ease:'power3.out',clearProps:'transform,opacity'});
+ gsap.fromTo(photo,{scale:1.018},{scale:1,duration:.55,ease:'power3.out',clearProps:'transform'});
+ gsap.timeline().fromTo(light,{opacity:0,xPercent:-36},{opacity:.72,xPercent:0,duration:.22,ease:'power2.out'}).to(light,{opacity:0,xPercent:36,duration:.3,ease:'power2.inOut'});
+}
+window.addEventListener('gelato-coverflow-ready',setupCoverflowMotion);
+window.addEventListener('gelato-coverflow-change',animateCoverflowChange);
+window.addEventListener('gelato-motion',setupCoverflowMotion);
 $$('[data-scoop]').forEach(button=>button.addEventListener('click',()=>{$$('[data-scoop]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));window.dispatchEvent(new CustomEvent('gelato-scoop',{detail:button.dataset.scoop}));}));
 const stage=$('#gelato-stage');
 if(stage?.dataset.hero==='realistic'){
