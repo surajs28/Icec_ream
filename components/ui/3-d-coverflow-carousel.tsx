@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useId, useRef, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { signatureFlavours } from "@/src/signature-flavours";
 import { cn } from "@/lib/utils";
 import { coverflowPose, swipeDirection } from "./carousel-motion";
@@ -200,10 +200,6 @@ export function CoverFlowCarousel({
             {items.map((item, idx) => <button type="button" key={idx} className="coverflow-dot" onClick={() => goToSlide(idx)} aria-label={`Show ${item.titleLine1}, slide ${idx + 1}`} aria-current={idx === index ? "true" : undefined}><span /></button>)}
           </div>
           <button className="coverflow-arrow" type="button" onClick={() => move(1)} aria-label="Next flavour" disabled={total <= 1}><ChevronRight size={21} aria-hidden="true" /></button>
-          {autoplay && total > 1 && <button className="coverflow-arrow coverflow-pause" type="button" disabled={reduceMotion} onClick={() => setPaused(value => !value)}
-            aria-label={reduceMotion ? "Autoplay disabled by motion preference" : paused ? "Start autoplay" : "Pause autoplay"} aria-pressed={paused || reduceMotion}>
-            {paused || reduceMotion ? <Play size={17} aria-hidden="true" /> : <Pause size={17} aria-hidden="true" />}
-          </button>}
         </div>
         <p className="coverflow-credit">Illustrative product photography. Final recipes and availability to be confirmed.</p>
         <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{announcement}</p>
